@@ -25,7 +25,9 @@ int32_t main()
 
     Scheduler scheduler;
 
-    // scheduler.reader();
+    scheduler.reader();
+
+    cout << "Hello World!\n";
 
     return 0;
 }
