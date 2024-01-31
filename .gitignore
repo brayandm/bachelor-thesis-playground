@@ -2,4 +2,4 @@
 .cph/
 .vscode/
 *.o
-Main
+Build/
