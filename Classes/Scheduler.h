@@ -28,9 +28,14 @@ public:
     std::vector<int> framesInTTI[MAXT];
     bool dataUserInTTI[MAXN][MAXT];
 
+    long double p[MAXK][MAXR][MAXN][MAXT];
+    bool b[MAXK][MAXR][MAXN][MAXT];
+
     Scheduler();
 
     void reader();
+
+    void printResult();
 };
 
 #endif // SCHEDULER_H
