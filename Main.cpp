@@ -33,7 +33,40 @@ int32_t main(int argc, char *argv[])
 
     scheduler.reader();
 
-    cout << "Hello World!\n";
+    for (int t = 0; t < scheduler.T; t++)
+    {
+        vector<pair<int, long double>> densityPerUser(scheduler.N);
+
+        for (int n = 0; n < scheduler.N; n++)
+            densityPerUser.push_back({n, 0});
+
+        for (auto j : scheduler.framesInTTI[t])
+        {
+            long double density = scheduler.TBS[j] / (long double)scheduler.amountTTIs[j];
+
+            densityPerUser[scheduler.userId[j]].second += density;
+        }
+
+        sort(densityPerUser.begin(), densityPerUser.end(), [](pair<int, long double> a, pair<int, long double> b)
+             { return a.second > b.second; });
+
+        int pos = 0;
+
+        for (int k = 0; k < scheduler.K; k++)
+        {
+            for (int r = 0; r < scheduler.R; r++)
+            {
+                if (pos < scheduler.N)
+                {
+                    scheduler.p[k][r][densityPerUser[pos].first][t] = 1;
+                    scheduler.b[k][r][densityPerUser[pos].first][t] = true;
+                    pos++;
+                }
+            }
+        }
+    }
+
+    scheduler.printResult();
 
     return 0;
 }
