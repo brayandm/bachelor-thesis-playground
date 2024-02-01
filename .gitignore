@@ -3,3 +3,4 @@
 .vscode/
 *.o
 Build/
+Tests/Output/
