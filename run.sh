@@ -1,1 +1,1 @@
-ulimit -s unlimited && ./Build/scheduler
+ulimit -s unlimited && ./Build/Scheduler
