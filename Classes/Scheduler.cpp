@@ -45,7 +45,7 @@ void Scheduler::printResult()
             {
                 for (int n = 0; n < N; n++)
                 {
-                    std::cout << p[k][r][n][t] << " ";
+                    std::cout << std::fixed << std::setprecision(5) << p[k][r][n][t] << " ";
                 }
                 std::cout << '\n';
             }
