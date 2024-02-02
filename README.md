@@ -10,3 +10,4 @@ This repository contains the code and data for my bachelor's thesis. The thesis 
 
 -   [ ] Add experiments snapshot (load and save)
 -   [ ] Add the test cases generator
+-   [ ] Improve the joiner.py to allow classes include other classes
