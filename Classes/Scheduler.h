@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 class Scheduler
 {
@@ -21,6 +22,7 @@ public:
     long double s0[MAXK][MAXR][MAXN][MAXT];
 
     long double d[MAXK][MAXN][MAXR][MAXN];
+    long double expD[MAXK][MAXN][MAXR][MAXN];
 
     long double TBS[MAXJ];
     int userId[MAXJ];
@@ -32,11 +34,29 @@ public:
     long double p[MAXK][MAXR][MAXN][MAXT];
     bool b[MAXK][MAXR][MAXN][MAXT];
 
+    long double dFactorPerR[MAXK][MAXR][MAXN];
+    long double dFactorPerK[MAXK][MAXN];
+
+    long double dPrecal[MAXK][MAXR][MAXN];
+    long double sPrecal[MAXK][MAXR][MAXN];
+    long double s[MAXK][MAXR][MAXN][MAXT];
+    long double st[MAXK][MAXN][MAXT];
+
+    long double G[MAXJ];
+
     Scheduler();
 
     void reader();
 
     void printResult();
+
+    long double geometricMean(std::vector<long double> vect);
+
+    long double mean(std::vector<long double> vect);
+
+    void precal();
+
+    void computeGfromPinT(int t);
 
     void summary();
 };
