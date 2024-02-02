@@ -48,6 +48,8 @@ public:
 
     void reader();
 
+    void loadOutput();
+
     void printResult();
 
     long double geometricMean(std::vector<long double> vect);

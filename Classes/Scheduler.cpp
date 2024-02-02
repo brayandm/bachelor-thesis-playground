@@ -38,6 +38,28 @@ void Scheduler::reader()
     }
 }
 
+void Scheduler::loadOutput()
+{
+    for (int t = 0; t < T; t++)
+    {
+        for (int k = 0; k < K; k++)
+        {
+            for (int r = 0; r < R; r++)
+            {
+                for (int n = 0; n < N; n++)
+                {
+                    std::cin >> p[k][r][n][t];
+
+                    if (p[k][r][n][t] > 0)
+                    {
+                        b[k][r][n][t] = true;
+                    }
+                }
+            }
+        }
+    }
+}
+
 void Scheduler::printResult()
 {
     for (int t = 0; t < T; t++)
@@ -194,5 +216,22 @@ void Scheduler::computeGfromPinT(int t)
 
 void Scheduler::summary()
 {
-    std::cout << "Hello World" << '\n';
+    precal();
+
+    for (int t = 0; t < T; t++)
+    {
+        computeGfromPinT(t);
+    }
+
+    int totalDelivered = 0;
+
+    for (int j = 0; j < J; j++)
+    {
+        if (G[j] >= TBS[j])
+        {
+            totalDelivered++;
+        }
+    }
+
+    std::cout << "Total delivered: " << totalDelivered << '\n';
 }
