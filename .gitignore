@@ -4,3 +4,4 @@
 *.o
 Build/
 Tests/Output/
+Joined.cpp
