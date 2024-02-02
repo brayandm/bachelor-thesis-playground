@@ -23,8 +23,8 @@ int32_t main(int argc, char *argv[])
     if (argc >= 2)
         freopen(argv[1], "r", stdin);
 
-    if (argc >= 3)
-        freopen(argv[2], "w", stdout);
+    if (argc >= 4)
+        freopen(argv[3], "w", stdout);
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
@@ -32,6 +32,11 @@ int32_t main(int argc, char *argv[])
     Scheduler scheduler;
 
     scheduler.reader();
+
+    if (argc >= 3)
+        freopen(argv[2], "r", stdin);
+
+    scheduler.loadOutput();
 
     scheduler.summary();
 
