@@ -18,4 +18,6 @@ for input_file in "$test_dir"*; do
     output_file="${output_dir}${filename%.*}.out"
 
     bash run.sh "$input_file" "$output_file"
+
+    bash summary.sh "$input_file"
 done

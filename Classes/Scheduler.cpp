@@ -52,3 +52,8 @@ void Scheduler::printResult()
         }
     }
 }
+
+void Scheduler::summary()
+{
+    std::cout << "Hello World" << '\n';
+}

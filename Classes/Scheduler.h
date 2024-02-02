@@ -37,6 +37,8 @@ public:
     void reader();
 
     void printResult();
+
+    void summary();
 };
 
 #endif // SCHEDULER_H
