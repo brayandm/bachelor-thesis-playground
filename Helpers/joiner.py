@@ -34,8 +34,6 @@ def main():
     main_file = "Main.cpp"
     class_files = get_class_files(directory)
 
-    print(class_files)
-
     class_contents = []
     for header_file, cpp_file in class_files:
         header_content = extract_file_content(os.path.join(directory, header_file))
@@ -49,8 +47,6 @@ def main():
 
         combined_content = header_content + "\n" + cpp_content
         class_contents.append((include_statement, combined_content))
-
-        print(combined_content)
 
     replace_in_main(main_file, directory, class_contents)
 
