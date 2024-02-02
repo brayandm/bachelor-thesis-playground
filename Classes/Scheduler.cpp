@@ -216,6 +216,11 @@ void Scheduler::computeGfromPinT(int t)
 
 void Scheduler::summary()
 {
+    const std::string redColor = "\033[31m";
+    const std::string yellowColor = "\033[33m";
+    const std::string greenColor = "\033[32m";
+    const std::string resetColor = "\033[0m";
+
     precal();
 
     for (int t = 0; t < T; t++)
@@ -233,5 +238,16 @@ void Scheduler::summary()
         }
     }
 
-    std::cout << "Total delivered: " << totalDelivered << " / " << J << '\n';
+    if ((long double)totalDelivered / (long double)J > 0.8)
+    {
+        std::cout << greenColor << "Total delivered: " << totalDelivered << " / " << J << resetColor << '\n';
+    }
+    else if ((long double)totalDelivered / (long double)J > 0.5)
+    {
+        std::cout << yellowColor << "Total delivered: " << totalDelivered << " / " << J << resetColor << '\n';
+    }
+    else
+    {
+        std::cout << redColor << "Total delivered: " << totalDelivered << " / " << J << resetColor << '\n';
+    }
 }

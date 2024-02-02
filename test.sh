@@ -1,6 +1,10 @@
 #!/bin/bash
 
-bash build.sh
+echo "Building..."
+
+bash build.sh > /dev/null 2>&1
+
+echo "Running tests..."
 
 test_dir="Tests/"
 output_dir="Tests/Output/"
