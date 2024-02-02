@@ -233,5 +233,5 @@ void Scheduler::summary()
         }
     }
 
-    std::cout << "Total delivered: " << totalDelivered << '\n';
+    std::cout << "Total delivered: " << totalDelivered << " / " << J << '\n';
 }
