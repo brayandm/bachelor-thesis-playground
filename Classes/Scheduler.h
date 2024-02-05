@@ -19,32 +19,49 @@ public:
 
     int N, K, T, R, J;
 
-    long double s0[MAXK][MAXR][MAXN][MAXT];
+    std::vector<std::vector<std::vector<std::vector<long double>>>> s0;
 
-    long double d[MAXK][MAXN][MAXR][MAXN];
-    long double expD[MAXK][MAXN][MAXR][MAXN];
+    std::vector<std::vector<std::vector<std::vector<long double>>>> d;
+    std::vector<std::vector<std::vector<std::vector<long double>>>> expD;
 
-    long double TBS[MAXJ];
-    int userId[MAXJ];
-    int firstTTI[MAXJ];
-    int amountTTIs[MAXJ];
-    std::vector<int> framesInTTI[MAXT];
-    bool dataUserInTTI[MAXN][MAXT];
+    std::vector<long double> TBS;
+    std::vector<int> userId;
+    std::vector<int> firstTTI;
+    std::vector<int> amountTTIs;
+    std::vector<std::vector<int>> framesInTTI;
+    std::vector<std::vector<bool>> dataUserInTTI;
 
-    long double p[MAXK][MAXR][MAXN][MAXT];
-    bool b[MAXK][MAXR][MAXN][MAXT];
+    std::vector<std::vector<std::vector<std::vector<long double>>>> p;
+    std::vector<std::vector<std::vector<std::vector<bool>>>> b;
 
-    long double dFactorPerR[MAXK][MAXR][MAXN];
-    long double dFactorPerK[MAXK][MAXN];
+    std::vector<std::vector<std::vector<long double>>> dFactorPerR;
+    std::vector<std::vector<long double>> dFactorPerK;
 
-    long double dPrecal[MAXK][MAXR][MAXN];
-    long double sPrecal[MAXK][MAXR][MAXN];
-    long double s[MAXK][MAXR][MAXN][MAXT];
-    long double st[MAXK][MAXN][MAXT];
+    std::vector<std::vector<std::vector<long double>>> dPrecal;
+    std::vector<std::vector<std::vector<long double>>> sPrecal;
+    std::vector<std::vector<std::vector<std::vector<long double>>>> s;
+    std::vector<std::vector<std::vector<long double>>> st;
 
-    long double G[MAXJ];
+    std::vector<long double> G;
 
-    Scheduler();
+    Scheduler() : s0(MAXK, std::vector<std::vector<std::vector<long double>>>(MAXR, std::vector<std::vector<long double>>(MAXN, std::vector<long double>(MAXT)))),
+                  d(MAXK, std::vector<std::vector<std::vector<long double>>>(MAXN, std::vector<std::vector<long double>>(MAXR, std::vector<long double>(MAXN)))),
+                  expD(MAXK, std::vector<std::vector<std::vector<long double>>>(MAXN, std::vector<std::vector<long double>>(MAXR, std::vector<long double>(MAXN)))),
+                  TBS(MAXJ),
+                  userId(MAXJ),
+                  firstTTI(MAXJ),
+                  amountTTIs(MAXJ),
+                  framesInTTI(MAXT, std::vector<int>()),
+                  dataUserInTTI(MAXN, std::vector<bool>(MAXT)),
+                  p(MAXK, std::vector<std::vector<std::vector<long double>>>(MAXR, std::vector<std::vector<long double>>(MAXN, std::vector<long double>(MAXT)))),
+                  b(MAXK, std::vector<std::vector<std::vector<bool>>>(MAXR, std::vector<std::vector<bool>>(MAXN, std::vector<bool>(MAXT)))),
+                  dFactorPerR(MAXK, std::vector<std::vector<long double>>(MAXR, std::vector<long double>(MAXN))),
+                  dFactorPerK(MAXK, std::vector<long double>(MAXN)),
+                  dPrecal(MAXK, std::vector<std::vector<long double>>(MAXR, std::vector<long double>(MAXN))),
+                  sPrecal(MAXK, std::vector<std::vector<long double>>(MAXR, std::vector<long double>(MAXN))),
+                  s(MAXK, std::vector<std::vector<std::vector<long double>>>(MAXR, std::vector<std::vector<long double>>(MAXN, std::vector<long double>(MAXT)))),
+                  st(MAXK, std::vector<std::vector<long double>>(MAXN, std::vector<long double>(MAXT))),
+                  G(MAXJ) {}
 
     void reader();
 

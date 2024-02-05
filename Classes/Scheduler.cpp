@@ -1,9 +1,5 @@
 #include "Scheduler.h"
 
-Scheduler::Scheduler()
-{
-}
-
 void Scheduler::reader()
 {
     std::cin >> N >> K >> T >> R;
