@@ -18,37 +18,45 @@ def remove_include_statements(file, include_statements):
     return file
 
 
-def replace_in_main(main_file, directory, class_contents):
-    with open(main_file, "r") as file:
-        main_content = file.read()
-
-    for include_statement, class_content in class_contents:
-        main_content = main_content.replace(include_statement, class_content)
-
-    with open("Joined.cpp", "w") as file:
-        file.write(main_content)
-
-
 def main():
     directory = "Classes/"
     main_file = "Main.cpp"
     class_files = get_class_files(directory)
 
-    class_contents = []
+    include_statements = []
+
+    for header_file, cpp_file in class_files:
+        include_statements.append(f'#include "{header_file}"')
+        include_statements.append(f'#include "{directory}{header_file}"')
+
+    combined_header_content = ""
+
     for header_file, cpp_file in class_files:
         header_content = extract_file_content(os.path.join(directory, header_file))
+
+        header_content = remove_include_statements(header_content, include_statements)
+
+        combined_header_content += header_content + "\n"
+
+    combined_cpp_content = ""
+
+    for header_file, cpp_file in class_files:
         cpp_content = extract_file_content(os.path.join(directory, cpp_file))
 
-        cpp_content = remove_include_statements(
-            cpp_content, [f'#include "{header_file}"']
-        )
+        cpp_content = remove_include_statements(cpp_content, include_statements)
 
-        include_statement = f'#include "{directory}{header_file}"'
+        combined_cpp_content += cpp_content + "\n"
 
-        combined_content = header_content + "\n" + cpp_content
-        class_contents.append((include_statement, combined_content))
+    main_content = extract_file_content(main_file)
 
-    replace_in_main(main_file, directory, class_contents)
+    main_content = remove_include_statements(main_content, include_statements)
+
+    combined_content = (
+        combined_header_content + "\n" + combined_cpp_content + "\n" + main_content
+    )
+
+    with open("Joined.cpp", "w") as file:
+        file.write(combined_content)
 
 
 if __name__ == "__main__":
