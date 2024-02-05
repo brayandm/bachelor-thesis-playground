@@ -35,7 +35,7 @@ int32_t main(int argc, char *argv[])
 
     for (int t = 0; t < scheduler.T; t++)
     {
-        vector<pair<int, long double>> densityPerUser(scheduler.N);
+        vector<pair<int, long double>> densityPerUser;
 
         for (int n = 0; n < scheduler.N; n++)
             densityPerUser.push_back({n, 0});
