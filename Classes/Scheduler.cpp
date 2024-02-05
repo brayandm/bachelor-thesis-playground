@@ -74,30 +74,6 @@ void Scheduler::printResult()
     }
 }
 
-long double Scheduler::geometricMean(std::vector<long double> vect)
-{
-    long double ans = 1;
-
-    for (auto x : vect)
-    {
-        ans *= x;
-    }
-
-    return pow(ans, (long double)1 / (long double)vect.size());
-}
-
-long double Scheduler::mean(std::vector<long double> vect)
-{
-    long double ans = 0;
-
-    for (auto x : vect)
-    {
-        ans += x;
-    }
-
-    return ans / (long double)vect.size();
-}
-
 void Scheduler::precal()
 {
     for (int k = 0; k < K; k++)
@@ -127,7 +103,7 @@ void Scheduler::precal()
 
                 values.push_back(dFactorPerR[k][r][m]);
             }
-            dFactorPerK[k][m] = geometricMean(values);
+            dFactorPerK[k][m] = Utils::geometricMean(values);
         }
 }
 

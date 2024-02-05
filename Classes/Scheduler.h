@@ -1,6 +1,7 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
+#include "Utils.h"
 #include <vector>
 #include <iostream>
 #include <iomanip>
@@ -68,10 +69,6 @@ public:
     void loadOutput();
 
     void printResult();
-
-    long double geometricMean(std::vector<long double> vect);
-
-    long double mean(std::vector<long double> vect);
 
     void precal();
 
