@@ -2,8 +2,14 @@
 
 read -p "Please enter the name of this experiment: " experiment_name
 
-mkdir -p "Experiments/$experiment_name/Classes"
+experiment_name=$(echo $experiment_name | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
 
-cp Main.cpp "Experiments/$experiment_name/Main.cpp"
+experiment_number=$(find Experiments -maxdepth 1 -type d | wc -l)
 
-cp -r Classes/* "Experiments/$experiment_name/Classes/"
+formatted_experiment_name="exp${experiment_number}_${experiment_name}"
+
+mkdir -p "Experiments/$formatted_experiment_name/Classes"
+
+cp Main.cpp "Experiments/$formatted_experiment_name/Main.cpp"
+
+cp -r Classes/* "Experiments/$formatted_experiment_name/Classes/"

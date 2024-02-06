@@ -15,37 +15,43 @@ This repository contains the code and data for my bachelor's thesis. The thesis 
 
 ## Commands
 
-### Build the project
+### Build the experiment
 
 ```bash
 bash build.sh
 ```
 
-### Run the project
+### Run the experiment
 
 ```bash
 bash run.sh
 ```
 
-### Build and run the project
+### Build and run the experiment
 
 ```bash
 bash br.sh
 ```
 
-### Test the project
+### Test the experiment
 
 ```bash
 bash test.sh
 ```
 
-### Summary the project
+### Summary the experiment
 
 ```bash
 bash summary.sh
 ```
 
-### Amalgamate the project
+### Save the experiment
+
+```bash
+bash save.sh
+```
+
+### Amalgamate the experiment
 
 ```bash
 bash join.sh
