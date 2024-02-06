@@ -12,6 +12,7 @@ This repository contains the code and data for my bachelor's thesis. The thesis 
 -   [ ] Add the test cases generator
 -   [x] Improve the joiner.py to allow classes include other classes
 -   [ ] Add total summary experiments to generate overall results, plots, tables and yaml files
+-   [ ] Dockerize the project
 
 ## Commands
 
