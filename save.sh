@@ -30,7 +30,11 @@ echo "{
 }" > "Experiments/${formatted_experiment_name}/Description.json"
 
 csv_file="Experiments/${formatted_experiment_name}/codeforcesResult.csv"
-echo "Case,Status,Time (ms),Memory (MB),Points" > "$csv_file"
+
+temp_file="$(mktemp)"
+
+echo "Case,Status,Time (ms),Memory (MB),Points" > "$temp_file"
+
 total_points=0
 
 for log in "${test_logs[@]}"; do
@@ -40,9 +44,12 @@ for log in "${test_logs[@]}"; do
         time=${BASH_REMATCH[2]}
         memory=${BASH_REMATCH[3]}
         points=${BASH_REMATCH[4]}
-        echo "$case_number,Accepted,$time,$memory,$points" >> "$csv_file"
-        total_points=$(echo "$total_points + $points" | bc)
+        echo "$case_number,Accepted,$time,$memory,$points" >> "$temp_file"
+        total_points=$(echo "$total_points + $points" | bc -l)
     fi
 done
 
-echo "Total Score: $total_points" >> "$csv_file"
+echo "Total Score: $total_points" > "$csv_file"
+echo "" >> "$csv_file"
+cat "$temp_file" >> "$csv_file"
+rm "$temp_file"
