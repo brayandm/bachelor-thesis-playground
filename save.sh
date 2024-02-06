@@ -18,9 +18,13 @@ experiment_number=$(find Experiments -maxdepth 1 -type d | wc -l)
 
 formatted_experiment_name="exp${experiment_number}_${experiment_name_snake_cased}"
 
+bash join.sh
+
 mkdir -p "Experiments/$formatted_experiment_name/Classes"
 
 cp Main.cpp "Experiments/$formatted_experiment_name/Main.cpp"
+
+cp Joined.cpp "Experiments/$formatted_experiment_name/Joined.cpp"
 
 cp -r Classes/* "Experiments/$formatted_experiment_name/Classes/"
 
