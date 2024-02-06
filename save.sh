@@ -16,9 +16,7 @@ cp Main.cpp "Experiments/$formatted_experiment_name/Main.cpp"
 
 cp -r Classes/* "Experiments/$formatted_experiment_name/Classes/"
 
-touch "Experiments/$formatted_experiment_name/Description.txt"
-
 echo "{
   \"name\": \"$experiment_name\",
-  \"description\": \"$experiment_description\",
+  \"description\": \"$experiment_description\"
 }" > "Experiments/${formatted_experiment_name}/Description.json"
