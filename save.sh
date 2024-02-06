@@ -39,7 +39,7 @@ temp_file="$(mktemp)"
 
 echo "Case,Status,Time (ms),Memory (MB),Points" > "$temp_file"
 
-total_points=0
+total_points=0.000
 
 for log in "${test_logs[@]}"; do
     if [[ $log =~ ^#([0-9]+):[[:space:]]+([a-zA-Z ]+)[[:space:]]+\[([0-9]+)[[:space:]]ms,[[:space:]]([0-9]+)[[:space:]]MB,[[:space:]]([0-9]+\.[0-9]+)[[:space:]]points\] ]]; then
