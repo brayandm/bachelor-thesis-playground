@@ -38,17 +38,20 @@ echo "Case,Status,Time (ms),Memory (MB),Points" > "$temp_file"
 total_points=0
 
 for log in "${test_logs[@]}"; do
-    if [[ $log =~ ^#([0-9]+):[[:space:]]Accepted[[:space:]]\[([0-9]+)[[:space:]]ms,[[:space:]]([0-9]+)[[:space:]]MB,[[:space:]]([0-9]+\.?[0-9]*)[[:space:]]points\] ]]; then
-
+    if [[ $log =~ ^#([0-9]+):[[:space:]]+([a-zA-Z ]+)[[:space:]]+\[([0-9]+)[[:space:]]ms,[[:space:]]([0-9]+)[[:space:]]MB,[[:space:]]([0-9]+\.[0-9]+)[[:space:]]points\] ]]; then
         case_number=${BASH_REMATCH[1]}
-        time=${BASH_REMATCH[2]}
-        memory=${BASH_REMATCH[3]}
-        points=${BASH_REMATCH[4]}
-        echo "$case_number,Accepted,$time,$memory,$points" >> "$temp_file"
-        total_points=$(echo "$total_points + $points" | bc -l)
+        status=${BASH_REMATCH[2]}
+        time=${BASH_REMATCH[3]}
+        memory=${BASH_REMATCH[4]}
+        points=${BASH_REMATCH[5]}
+
+        if [[ "$status" == "Accepted" ]]; then
+            total_points=$(echo "$total_points + $points" | bc -l)
+        fi
+        
+        echo "$case_number,$status,$time,$memory,$points" >> "$temp_file"
     fi
 done
-
 echo "Total Score: $total_points" > "$csv_file"
 echo "" >> "$csv_file"
 cat "$temp_file" >> "$csv_file"
