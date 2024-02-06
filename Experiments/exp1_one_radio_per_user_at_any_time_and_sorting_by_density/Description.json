@@ -1,0 +1,4 @@
+{
+  "name": "One radio per user at any time and sorting by density",
+  "description": "Here we are assigning one radio per user at any t, for each t we sort the data frames by density of the data, that is size/TTIs, and then we assign radio resources to the users that have more density of packages after cummulating the densities, also we are only giving to radios power of 1"
+}
