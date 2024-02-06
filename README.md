@@ -13,6 +13,7 @@ This repository contains the code and data for my bachelor's thesis. The thesis 
 -   [x] Improve the joiner.py to allow classes include other classes
 -   [ ] Add total summary experiments to generate overall results, plots, tables and yaml files
 -   [ ] Dockerize the project
+-   [ ] Dont use constants in the Schedule class, just resize the dimensions of the vectors dynamically
 
 ## Commands
 
