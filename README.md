@@ -39,12 +39,6 @@ bash br.sh
 bash test.sh
 ```
 
-### Summary the experiment
-
-```bash
-bash summary.sh
-```
-
 ### Save the experiment
 
 ```bash
