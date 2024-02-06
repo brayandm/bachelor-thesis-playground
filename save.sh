@@ -30,7 +30,7 @@ echo "{
 }" > "Experiments/${formatted_experiment_name}/Description.json"
 
 csv_file="Experiments/${formatted_experiment_name}/codeforcesResult.csv"
-echo "Case,Status,Time,Memory,Points" > "$csv_file"
+echo "Case,Status,Time (ms),Memory (MB),Points" > "$csv_file"
 total_points=0
 
 for log in "${test_logs[@]}"; do
