@@ -1,6 +1,6 @@
 # Notes
 
--   $R$ are the number of radios
+-   There are $R$ radios
 -   Each radio have $K$ cells
 -   At any point of time if all users correspond only one radio
     and vice versa the formula for $S_{nt}^{(k)} = S_{0,rnt}^{(k)} \times P_{rnt}^{(k)}$, so the amount of data
