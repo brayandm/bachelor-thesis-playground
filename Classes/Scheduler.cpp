@@ -79,11 +79,11 @@ void Scheduler::precal()
     for (int k = 0; k < K; k++)
         for (int m = 0; m < N; m++)
         {
-            std::vector<long double> values;
+            std::vector<double> values;
             for (int r = 0; r < R; r++)
             {
-                long double up = 1;
-                long double down = 1;
+                double up = 1;
+                double down = 1;
 
                 for (int n = 0; n < N; n++)
                 {
@@ -142,9 +142,9 @@ void Scheduler::computeGfromPinT(int t)
 
             for (int r = 0; r < R; r++)
             {
-                long double up = s0[k][r][n][t] * p[k][r][n][t] * exp(dPrecal[k][r][n]);
+                double up = s0[k][r][n][t] * p[k][r][n][t] * exp(dPrecal[k][r][n]);
 
-                long double down = 1;
+                double down = 1;
 
                 for (int kt = 0; kt < K; kt++)
                 {
@@ -165,7 +165,7 @@ void Scheduler::computeGfromPinT(int t)
 
             if (bt)
             {
-                st[k][n][t] = pow(st[k][n][t], (long double)1 / (long double)bt);
+                st[k][n][t] = pow(st[k][n][t], (double)1 / (double)bt);
             }
             else
             {
@@ -186,7 +186,7 @@ void Scheduler::computeGfromPinT(int t)
     }
 }
 
-long double Scheduler::computeGforFrameWithoutInterferences(int j)
+double Scheduler::computeGforFrameWithoutInterferences(int j)
 {
     return 0;
 }
@@ -215,11 +215,11 @@ void Scheduler::summary()
         }
     }
 
-    if ((long double)totalDelivered / (long double)J > 0.8)
+    if ((double)totalDelivered / (double)J > 0.8)
     {
         std::cout << greenColor << "Total delivered: " << totalDelivered << " / " << J << resetColor << '\n';
     }
-    else if ((long double)totalDelivered / (long double)J > 0.5)
+    else if ((double)totalDelivered / (double)J > 0.5)
     {
         std::cout << yellowColor << "Total delivered: " << totalDelivered << " / " << J << resetColor << '\n';
     }

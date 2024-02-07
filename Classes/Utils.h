@@ -7,8 +7,8 @@
 class Utils
 {
 public:
-    static long double geometricMean(const std::vector<long double> &vect);
-    static long double mean(const std::vector<long double> &vect);
+    static double geometricMean(const std::vector<double> &vect);
+    static double mean(const std::vector<double> &vect);
 };
 
 #endif // UTILS_H

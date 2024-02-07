@@ -35,19 +35,19 @@ int32_t main(int argc, char *argv[])
 
     for (int t = 0; t < scheduler.T; t++)
     {
-        vector<pair<int, long double>> densityPerUser;
+        vector<pair<int, double>> densityPerUser;
 
         for (int n = 0; n < scheduler.N; n++)
             densityPerUser.push_back({n, 0});
 
         for (auto j : scheduler.framesInTTI[t])
         {
-            long double density = scheduler.TBS[j] / (long double)scheduler.amountTTIs[j];
+            double density = scheduler.TBS[j] / (double)scheduler.amountTTIs[j];
 
             densityPerUser[scheduler.userId[j]].second += density;
         }
 
-        sort(densityPerUser.begin(), densityPerUser.end(), [](pair<int, long double> a, pair<int, long double> b)
+        sort(densityPerUser.begin(), densityPerUser.end(), [](pair<int, double> a, pair<int, double> b)
              { return a.second > b.second; });
 
         int pos = 0;
