@@ -1,8 +1,24 @@
 #include "Scheduler.h"
 
+Scheduler::Scheduler() {}
+
 void Scheduler::reader()
 {
     std::cin >> N >> K >> T >> R;
+
+    s0.resize(K, std::vector<std::vector<std::vector<double>>>(R, std::vector<std::vector<double>>(N, std::vector<double>(T))));
+    d.resize(K, std::vector<std::vector<std::vector<double>>>(N, std::vector<std::vector<double>>(R, std::vector<double>(N))));
+    expD.resize(K, std::vector<std::vector<std::vector<double>>>(N, std::vector<std::vector<double>>(R, std::vector<double>(N))));
+    framesInTTI.resize(T, std::vector<int>());
+    dataUserInTTI.resize(N, std::vector<bool>(T));
+    p.resize(K, std::vector<std::vector<std::vector<double>>>(R, std::vector<std::vector<double>>(N, std::vector<double>(T))));
+    b.resize(K, std::vector<std::vector<std::vector<bool>>>(R, std::vector<std::vector<bool>>(N, std::vector<bool>(T))));
+    dFactorPerR.resize(K, std::vector<std::vector<double>>(R, std::vector<double>(N)));
+    dFactorPerK.resize(K, std::vector<double>(N));
+    dPrecal.resize(K, std::vector<std::vector<double>>(R, std::vector<double>(N)));
+    sPrecal.resize(K, std::vector<std::vector<double>>(R, std::vector<double>(N)));
+    s.resize(K, std::vector<std::vector<std::vector<double>>>(R, std::vector<std::vector<double>>(N, std::vector<double>(T))));
+    st.resize(K, std::vector<std::vector<double>>(N, std::vector<double>(T)));
 
     for (int t = 0; t < T; t++)
         for (int k = 0; k < K; k++)
@@ -20,6 +36,12 @@ void Scheduler::reader()
                 }
 
     std::cin >> J;
+
+    TBS.resize(J);
+    userId.resize(J);
+    firstTTI.resize(J);
+    amountTTIs.resize(J);
+    G.resize(J);
 
     for (int j = 0; j < J; j++)
     {

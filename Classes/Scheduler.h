@@ -10,12 +10,6 @@
 class Scheduler
 {
 public:
-    static constexpr int MAXK = 10;
-    static constexpr int MAXR = 10;
-    static constexpr int MAXN = 100;
-    static constexpr int MAXT = 1000;
-    static constexpr int MAXJ = 5000;
-    static constexpr int MAXS = 10000;
     static constexpr int W = 192;
 
     int N, K, T, R, J;
@@ -45,24 +39,7 @@ public:
 
     std::vector<double> G;
 
-    Scheduler() : s0(MAXK, std::vector<std::vector<std::vector<double>>>(MAXR, std::vector<std::vector<double>>(MAXN, std::vector<double>(MAXT)))),
-                  d(MAXK, std::vector<std::vector<std::vector<double>>>(MAXN, std::vector<std::vector<double>>(MAXR, std::vector<double>(MAXN)))),
-                  expD(MAXK, std::vector<std::vector<std::vector<double>>>(MAXN, std::vector<std::vector<double>>(MAXR, std::vector<double>(MAXN)))),
-                  TBS(MAXJ),
-                  userId(MAXJ),
-                  firstTTI(MAXJ),
-                  amountTTIs(MAXJ),
-                  framesInTTI(MAXT, std::vector<int>()),
-                  dataUserInTTI(MAXN, std::vector<bool>(MAXT)),
-                  p(MAXK, std::vector<std::vector<std::vector<double>>>(MAXR, std::vector<std::vector<double>>(MAXN, std::vector<double>(MAXT)))),
-                  b(MAXK, std::vector<std::vector<std::vector<bool>>>(MAXR, std::vector<std::vector<bool>>(MAXN, std::vector<bool>(MAXT)))),
-                  dFactorPerR(MAXK, std::vector<std::vector<double>>(MAXR, std::vector<double>(MAXN))),
-                  dFactorPerK(MAXK, std::vector<double>(MAXN)),
-                  dPrecal(MAXK, std::vector<std::vector<double>>(MAXR, std::vector<double>(MAXN))),
-                  sPrecal(MAXK, std::vector<std::vector<double>>(MAXR, std::vector<double>(MAXN))),
-                  s(MAXK, std::vector<std::vector<std::vector<double>>>(MAXR, std::vector<std::vector<double>>(MAXN, std::vector<double>(MAXT)))),
-                  st(MAXK, std::vector<std::vector<double>>(MAXN, std::vector<double>(MAXT))),
-                  G(MAXJ) {}
+    Scheduler();
 
     void reader();
 
