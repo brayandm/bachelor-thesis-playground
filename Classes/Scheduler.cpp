@@ -186,6 +186,11 @@ void Scheduler::computeGfromPinT(int t)
     }
 }
 
+long double Scheduler::computeGforFrameWithoutInterferences(int j)
+{
+    return 0;
+}
+
 void Scheduler::summary()
 {
     const std::string redColor = "\033[31m";

@@ -74,6 +74,8 @@ public:
 
     void computeGfromPinT(int t);
 
+    long double computeGforFrameWithoutInterferences(int j);
+
     void summary();
 };
 
