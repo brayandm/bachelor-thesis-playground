@@ -210,7 +210,22 @@ void Scheduler::computeGfromPinT(int t)
 
 double Scheduler::computeGforFrameWithoutInterferences(int j)
 {
-    return 0;
+    double g = 0;
+
+    for (int t = firstTTI[j]; t < firstTTI[j] + amountTTIs[j]; t++)
+    {
+        for (int k = 0; k < K; k++)
+        {
+            for (int r = 0; r < R; r++)
+            {
+                g += (int)b[k][r][userId[j]][t] * log2(1 + s0[k][r][userId[j]][t] * p[k][r][userId[j]][t]);
+            }
+        }
+    }
+
+    g *= W;
+
+    return g;
 }
 
 void Scheduler::summary()
