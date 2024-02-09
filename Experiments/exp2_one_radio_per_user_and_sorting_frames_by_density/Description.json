@@ -1,4 +1,4 @@
 {
-  "name": "one radio per user and sorting frames by density",
-  "description": "Here we are assigning only one radio to users and sorting the frames by density and then iteration one by one trying to schedule"
+    "name": "One radio per user and sorting frames by density",
+    "description": "Here we are assigning only one radio to users and sorting the frames by density and then iteration one by one trying to schedule"
 }
