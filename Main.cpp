@@ -42,7 +42,7 @@ int32_t main(int argc, char *argv[])
 
     sort(frames.begin(), frames.end());
 
-    vector<vector<bool>> radioOcupation(scheduler.T, vector<bool>(scheduler.R, false));
+    vector<vector<bool>> resourceBlockOcupation(scheduler.T, vector<bool>(scheduler.R, false));
 
     for (auto frame : frames)
     {
@@ -60,7 +60,7 @@ int32_t main(int argc, char *argv[])
 
             for (int r = 0; r < scheduler.R; r++)
             {
-                if (radioOcupation[t][r])
+                if (resourceBlockOcupation[t][r])
                     continue;
 
                 for (int k = 0; k < scheduler.K; k++)
@@ -76,7 +76,7 @@ int32_t main(int argc, char *argv[])
 
             if (bestRadio != -1)
             {
-                radioOcupation[t][bestRadio] = true;
+                resourceBlockOcupation[t][bestRadio] = true;
                 ocuppiedCells.push_back({t, bestRadio, bestCell});
                 scheduler.p[bestCell][bestRadio][scheduler.userId[j]][t] = 1;
                 scheduler.b[bestCell][bestRadio][scheduler.userId[j]][t] = true;
@@ -96,7 +96,7 @@ int32_t main(int argc, char *argv[])
                 int r = get<1>(cell);
                 int k = get<2>(cell);
 
-                radioOcupation[t][r] = false;
+                resourceBlockOcupation[t][r] = false;
                 scheduler.p[k][r][scheduler.userId[j]][t] = 0;
                 scheduler.b[k][r][scheduler.userId[j]][t] = false;
             }
