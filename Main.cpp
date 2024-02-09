@@ -50,6 +50,8 @@ int32_t main(int argc, char *argv[])
 
         double g = 0;
 
+        vector<tuple<int, int, int>> ocuppiedCells;
+
         for (int t = scheduler.firstTTI[j]; t < scheduler.firstTTI[j] + scheduler.amountTTIs[j]; t++)
         {
             int bestRadio = -1;
@@ -75,6 +77,7 @@ int32_t main(int argc, char *argv[])
             if (bestRadio != -1)
             {
                 radioOcupation[t][bestRadio] = true;
+                ocuppiedCells.push_back({t, bestRadio, bestCell});
                 scheduler.p[bestCell][bestRadio][scheduler.userId[j]][t] = 1;
                 scheduler.b[bestCell][bestRadio][scheduler.userId[j]][t] = true;
 
@@ -82,6 +85,20 @@ int32_t main(int argc, char *argv[])
 
                 if (g > scheduler.TBS[j] + scheduler.EPS)
                     break;
+            }
+        }
+
+        if (g < scheduler.TBS[j] + scheduler.EPS)
+        {
+            for (auto cell : ocuppiedCells)
+            {
+                int t = get<0>(cell);
+                int r = get<1>(cell);
+                int k = get<2>(cell);
+
+                radioOcupation[t][r] = false;
+                scheduler.p[k][r][scheduler.userId[j]][t] = 0;
+                scheduler.b[k][r][scheduler.userId[j]][t] = false;
             }
         }
     }
