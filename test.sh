@@ -3,7 +3,7 @@
 echo "Building..."
 
 if ! bash build.sh > /dev/null 2>&1; then
-    echo "Error during build process."
+    echo -e "\033[31mError during build process.\033[0m"
     exit 1
 fi
 
@@ -26,7 +26,10 @@ for input_file in "$test_dir"*; do
 
     bash run.sh "$input_file" "$output_file"
 
-    bash validate.sh "$input_file" "$output_file"
+     if ! bash validate.sh "$input_file" "$output_file" > /dev/null 2>&1; then
+        echo -e "\033[31mError during validation for $input_file.\033[0m"
+        continue 
+    fi
 
     bash summary.sh "$input_file" "$output_file"
 done
