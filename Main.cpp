@@ -54,7 +54,7 @@ int32_t main(int argc, char *argv[])
 
         for (int t = scheduler.firstTTI[j]; t < scheduler.firstTTI[j] + scheduler.amountTTIs[j]; t++)
         {
-            int bestRadio = -1;
+            int bestRBG = -1;
             int bestCell = -1;
             double maxSINR0 = -1e9;
 
@@ -68,18 +68,18 @@ int32_t main(int argc, char *argv[])
                     if (scheduler.s0[k][r][scheduler.userId[j]][t] > maxSINR0)
                     {
                         maxSINR0 = scheduler.s0[k][r][scheduler.userId[j]][t];
-                        bestRadio = r;
+                        bestRBG = r;
                         bestCell = k;
                     }
                 }
             }
 
-            if (bestRadio != -1)
+            if (bestRBG != -1)
             {
-                resourceBlockOcupation[t][bestRadio] = true;
-                ocuppiedCells.push_back({t, bestRadio, bestCell});
-                scheduler.p[bestCell][bestRadio][scheduler.userId[j]][t] = 1;
-                scheduler.b[bestCell][bestRadio][scheduler.userId[j]][t] = true;
+                resourceBlockOcupation[t][bestRBG] = true;
+                ocuppiedCells.push_back({t, bestRBG, bestCell});
+                scheduler.p[bestCell][bestRBG][scheduler.userId[j]][t] = 1;
+                scheduler.b[bestCell][bestRBG][scheduler.userId[j]][t] = true;
 
                 g += scheduler.computeGforFrameWithoutInterferences(j, t);
 
