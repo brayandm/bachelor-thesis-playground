@@ -26,5 +26,7 @@ for input_file in "$test_dir"*; do
 
     bash run.sh "$input_file" "$output_file"
 
+    bash validate.sh "$input_file" "$output_file"
+
     bash summary.sh "$input_file" "$output_file"
 done
