@@ -7,3 +7,4 @@
     transmitted is $g_j = W \times \sum_{t=t_{0,j}}^{t_{1,j}}\sum_{k}\sum_{r}b_{rnt}^{(k)}\times \log_{2}(1 + S_{0,rnt}^{(k)} \times P_{rnt}^{(k)})$
 -   It doesn't make sense to assign two radios to the same user
     beacuse the signal received by many radios is averaged geometrically
+-   It is guaranteed that each user has at most one frame at each TTI
