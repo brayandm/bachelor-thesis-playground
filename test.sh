@@ -2,7 +2,10 @@
 
 echo "Building..."
 
-bash build.sh > /dev/null 2>&1
+if ! bash build.sh > /dev/null 2>&1; then
+    echo "Error during build process."
+    exit 1
+fi
 
 echo "Running tests..."
 
