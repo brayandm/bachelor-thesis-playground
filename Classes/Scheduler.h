@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <cassert>
 
 class Scheduler
 {
@@ -56,6 +57,8 @@ public:
     double computeGforFrameWithoutInterferences(int j);
 
     double computeGforFrameWithoutInterferences(int j, int t);
+
+    void validateOutput();
 
     void summary();
 };

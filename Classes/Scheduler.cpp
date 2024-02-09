@@ -245,6 +245,23 @@ double Scheduler::computeGforFrameWithoutInterferences(int j, int t)
     return g;
 }
 
+void Scheduler::validateOutput()
+{
+    for (int t = 0; t < T; t++)
+    {
+        for (int k = 0; k < K; k++)
+        {
+            for (int r = 0; r < R; r++)
+            {
+                for (int n = 0; n < N; n++)
+                {
+                    assert(p[k][r][n][t] >= 0);
+                }
+            }
+        }
+    }
+}
+
 void Scheduler::summary()
 {
     const std::string redColor = "\033[31m";
