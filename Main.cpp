@@ -33,35 +33,46 @@ int32_t main(int argc, char *argv[])
 
     scheduler.reader();
 
-    for (int t = 0; t < scheduler.T; t++)
+    vector<pair<int, int>> frames;
+
+    for (int j = 0; j < scheduler.J; j++)
     {
-        vector<pair<int, double>> densityPerUser;
+        frames.push_back({scheduler.amountTTIs[j], j});
+    }
 
-        for (int n = 0; n < scheduler.N; n++)
-            densityPerUser.push_back({n, 0});
+    sort(frames.begin(), frames.end());
 
-        for (auto j : scheduler.framesInTTI[t])
+    vector<vector<bool>> radioOcupation(scheduler.T, vector<bool>(scheduler.R, false));
+
+    for (int j = 0; j < scheduler.J; j++)
+    {
+        for (int t = scheduler.firstTTI[j]; t < scheduler.firstTTI[j] + scheduler.amountTTIs[j]; t++)
         {
-            double density = scheduler.TBS[j] / (double)scheduler.amountTTIs[j];
+            int bestRadio = -1;
+            int bestCell = -1;
+            double maxSINR0 = -1e9;
 
-            densityPerUser[scheduler.userId[j]].second += density;
-        }
-
-        sort(densityPerUser.begin(), densityPerUser.end(), [](pair<int, double> a, pair<int, double> b)
-             { return a.second > b.second; });
-
-        int pos = 0;
-
-        for (int k = 0; k < scheduler.K; k++)
-        {
             for (int r = 0; r < scheduler.R; r++)
             {
-                if (pos < scheduler.N)
+                if (radioOcupation[t][r])
+                    continue;
+
+                for (int k = 0; k < scheduler.K; k++)
                 {
-                    scheduler.p[k][r][densityPerUser[pos].first][t] = 1;
-                    scheduler.b[k][r][densityPerUser[pos].first][t] = true;
-                    pos++;
+                    if (scheduler.s0[k][r][scheduler.userId[j]][t] > maxSINR0)
+                    {
+                        maxSINR0 = scheduler.s0[k][r][scheduler.userId[j]][t];
+                        bestRadio = r;
+                        bestCell = k;
+                    }
                 }
+            }
+
+            if (bestRadio != -1)
+            {
+                radioOcupation[t][bestRadio] = true;
+                scheduler.p[bestCell][bestRadio][scheduler.userId[j]][t] = 1;
+                scheduler.b[bestCell][bestRadio][scheduler.userId[j]][t] = true;
             }
         }
     }
