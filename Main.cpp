@@ -46,6 +46,8 @@ int32_t main(int argc, char *argv[])
 
     for (int j = 0; j < scheduler.J; j++)
     {
+        double g = 0;
+
         for (int t = scheduler.firstTTI[j]; t < scheduler.firstTTI[j] + scheduler.amountTTIs[j]; t++)
         {
             int bestRadio = -1;
@@ -73,6 +75,11 @@ int32_t main(int argc, char *argv[])
                 radioOcupation[t][bestRadio] = true;
                 scheduler.p[bestCell][bestRadio][scheduler.userId[j]][t] = 1;
                 scheduler.b[bestCell][bestRadio][scheduler.userId[j]][t] = true;
+
+                g += scheduler.computeGforFrameWithoutInterferences(j, t);
+
+                if (g > scheduler.TBS[j] + scheduler.EPS)
+                    break;
             }
         }
     }
