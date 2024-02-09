@@ -42,7 +42,7 @@ echo "Case,Status,Time (ms),Memory (MB),Points" > "$temp_file"
 total_points=0.000
 
 for log in "${test_logs[@]}"; do
-    if [[ $log =~ ^#([0-9]+):[[:space:]]+([a-zA-Z ]+)[[:space:]]+\[([0-9]+)[[:space:]]ms,[[:space:]]([0-9]+)[[:space:]]MB,[[:space:]]([0-9]+\.[0-9]+)[[:space:]]points\] ]]; then
+    if [[ $log =~ ^#([0-9]+):[[:space:]]+([a-zA-Z ]+)[[:space:]]+\[([0-9]+)[[:space:]]ms,[[:space:]]([0-9]+)[[:space:]]MB,[[:space:]]([0-9]+(\.[0-9]+)?)[[:space:]]points\] ]]; then
         case_number=${BASH_REMATCH[1]}
         status=${BASH_REMATCH[2]}
         time=${BASH_REMATCH[3]}
