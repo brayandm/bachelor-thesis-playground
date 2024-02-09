@@ -44,7 +44,7 @@ int32_t main(int argc, char *argv[])
 
     vector<vector<bool>> radioOcupation(scheduler.T, vector<bool>(scheduler.R, false));
 
-    for (int j = 0; j < scheduler.J; j++)
+    for (auto [_, j] : frames)
     {
         double g = 0;
 
