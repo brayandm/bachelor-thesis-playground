@@ -1,4 +1,4 @@
 {
     "name": "One RBG per user and sorting frames by density",
-    "description": "Here we are assigning only one radio to users and sorting the frames by density and then iteration one by one trying to schedule"
+    "description": "Here we are assigning only one RBG to users and sorting the frames by density and then iteration one by one trying to schedule"
 }
