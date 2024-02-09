@@ -42,7 +42,7 @@ int32_t main(int argc, char *argv[])
 
     sort(frames.begin(), frames.end());
 
-    vector<vector<bool>> resourceBlockOcupation(scheduler.T, vector<bool>(scheduler.R, false));
+    vector<vector<pair<int, int>>> resourceBlockOcupation(scheduler.T, vector<pair<int, int>>(scheduler.R, {-1, -1}));
 
     for (auto frame : frames)
     {
@@ -60,7 +60,7 @@ int32_t main(int argc, char *argv[])
 
             for (int r = 0; r < scheduler.R; r++)
             {
-                if (resourceBlockOcupation[t][r])
+                if (resourceBlockOcupation[t][r] != pair<int, int>(-1, -1))
                     continue;
 
                 for (int k = 0; k < scheduler.K; k++)
@@ -76,7 +76,7 @@ int32_t main(int argc, char *argv[])
 
             if (bestRBG != -1)
             {
-                resourceBlockOcupation[t][bestRBG] = true;
+                resourceBlockOcupation[t][bestRBG] = {bestCell, scheduler.userId[j]};
                 ocuppiedCells.push_back({t, bestRBG, bestCell});
                 scheduler.p[bestCell][bestRBG][scheduler.userId[j]][t] = 1;
                 scheduler.b[bestCell][bestRBG][scheduler.userId[j]][t] = true;
@@ -96,7 +96,7 @@ int32_t main(int argc, char *argv[])
                 int r = get<1>(cell);
                 int k = get<2>(cell);
 
-                resourceBlockOcupation[t][r] = false;
+                resourceBlockOcupation[t][r] = {-1, -1};
                 scheduler.p[k][r][scheduler.userId[j]][t] = 0;
                 scheduler.b[k][r][scheduler.userId[j]][t] = false;
             }
