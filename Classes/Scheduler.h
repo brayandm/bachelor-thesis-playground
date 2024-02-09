@@ -53,6 +53,8 @@ public:
 
     double computeGforFrameWithoutInterferences(int j);
 
+    double computeGforFrameWithoutInterferences(int j, int t);
+
     void summary();
 };
 

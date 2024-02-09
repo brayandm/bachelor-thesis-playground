@@ -228,6 +228,23 @@ double Scheduler::computeGforFrameWithoutInterferences(int j)
     return g;
 }
 
+double Scheduler::computeGforFrameWithoutInterferences(int j, int t)
+{
+    double g = 0;
+
+    for (int k = 0; k < K; k++)
+    {
+        for (int r = 0; r < R; r++)
+        {
+            g += (int)b[k][r][userId[j]][t] * log2(1 + s0[k][r][userId[j]][t] * p[k][r][userId[j]][t]);
+        }
+    }
+
+    g *= W;
+
+    return g;
+}
+
 void Scheduler::summary()
 {
     const std::string redColor = "\033[31m";
