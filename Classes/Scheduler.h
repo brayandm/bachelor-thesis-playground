@@ -10,7 +10,9 @@
 class Scheduler
 {
 public:
-    static constexpr int W = 192;
+    static const int W = 192;
+
+    static const int EPS = 1e-9;
 
     int N, K, T, R, J;
 
