@@ -2,8 +2,10 @@
 
 echo "Building..."
 
-if ! bash build.sh > /dev/null 2>&1; then
-    echo -e "\033[31mError during build process.\033[0m"
+error_output=$(bash build.sh 2>&1 > /dev/null)
+
+if [ $? -ne 0 ]; then 
+    echo -e "\033[31m$error_output\033[0m"
     exit 1
 fi
 
