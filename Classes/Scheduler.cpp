@@ -251,13 +251,25 @@ void Scheduler::validateOutput()
     {
         for (int k = 0; k < K; k++)
         {
+            double sumOverR = 0;
+
             for (int r = 0; r < R; r++)
             {
+                double sumOverN = 0;
+
                 for (int n = 0; n < N; n++)
                 {
                     assert(p[k][r][n][t] >= 0);
+
+                    sumOverN += p[k][r][n][t];
                 }
+
+                assert(sumOverN <= 4);
+
+                sumOverR += sumOverN;
             }
+
+            assert(sumOverR <= R);
         }
     }
 }
