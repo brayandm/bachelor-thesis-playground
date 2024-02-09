@@ -33,18 +33,18 @@ int32_t main(int argc, char *argv[])
 
     scheduler.reader();
 
-    vector<pair<int, int>> frames;
+    vector<tuple<int, double, int>> frames;
 
     for (int j = 0; j < scheduler.J; j++)
     {
-        frames.push_back({scheduler.amountTTIs[j], j});
+        frames.push_back({scheduler.amountTTIs[j], scheduler.TBS[j], j});
     }
 
     sort(frames.begin(), frames.end());
 
     vector<vector<bool>> radioOcupation(scheduler.T, vector<bool>(scheduler.R, false));
 
-    for (auto [_, j] : frames)
+    for (auto [_, _, j] : frames)
     {
         double g = 0;
 
