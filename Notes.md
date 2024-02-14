@@ -8,3 +8,4 @@
 -   It doesn't make sense to assign two RBGs to the same user
     beacuse the signal received by many RBGs is averaged geometrically
 -   It is guaranteed that each user has at most one frame at each TTI
+-   The total amount of power for an specific cell at any time from the same RBG should be less than 4
