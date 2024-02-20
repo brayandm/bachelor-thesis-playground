@@ -6,7 +6,7 @@
       {
         "id": "197fefdf56b7ebc0",
         "type": "tabs",
-        "dimension": 78.23604060913706,
+        "dimension": 63.70558375634518,
         "children": [
           {
             "id": "c5254b42f20b7d27",
@@ -19,29 +19,16 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "6f375c87ffb90370",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Formulas.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "fbde19538cf4eac8",
+        "id": "d409c5654d5b7ac9",
         "type": "tabs",
-        "dimension": 21.763959390862944,
+        "dimension": 36.29441624365482,
         "children": [
           {
-            "id": "e2c3524adcf4c84d",
+            "id": "6f375c87ffb90370",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -77,7 +64,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Formulas",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -114,7 +101,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Formulas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +117,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Formulas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,9 +138,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Formulas.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -177,8 +160,8 @@
   },
   "active": "6f375c87ffb90370",
   "lastOpenFiles": [
-    "Formulas.md",
     "Main.md",
+    "Formulas.md",
     "Welcome.md"
   ]
 }
