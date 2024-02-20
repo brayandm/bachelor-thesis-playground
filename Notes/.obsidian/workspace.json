@@ -19,8 +19,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "8d3271c5d7ec2d13",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Formulas.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "d409c5654d5b7ac9",
@@ -160,8 +173,9 @@
   },
   "active": "6f375c87ffb90370",
   "lastOpenFiles": [
-    "Main.md",
     "Formulas.md",
+    "Main.md",
+    "Multiple iteration - single frame.md",
     "Welcome.md"
   ]
 }

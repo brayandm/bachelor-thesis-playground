@@ -1,4 +1,4 @@
-# Notes
+# General Notes
 
 -   There are $R$ RBGs
 -   Each RBG has $K$ cells
@@ -11,4 +11,8 @@
 -   The total amount of power for an specific cell at any time from the same RBG should be less than $4$
 -   The total amount of power for an specific cell at any time from all RBGs should be less than $R$
 
-# [[Formulas]]
+## [[Formulas]]
+
+## Algorithms
+
+- [[Multiple iteration - single frame]]
