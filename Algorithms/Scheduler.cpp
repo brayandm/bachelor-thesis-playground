@@ -1,6 +1,6 @@
-#include "ScheduleOneRun.h"
+#include "Scheduler.h"
 
-void ScheduleOneRun::run()
+void Scheduler::run()
 {
     DataStorage dataStorage;
     InputReader inputReader;

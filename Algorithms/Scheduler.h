@@ -1,5 +1,5 @@
-#ifndef SCHEDULEONERUN_H
-#define SCHEDULEONERUN_H
+#ifndef SCHEDULER_H
+#define SCHEDULER_H
 
 #include "../Classes/InputStorage.h"
 #include "../Classes/InputReader.h"
@@ -11,11 +11,11 @@
 #include <vector>
 #include <algorithm>
 
-class ScheduleOneRun
+class Scheduler
 {
 public:
     static const int EPS = 1e-9;
     void run();
 };
 
-#endif // SCHEDULEONERUN_H
+#endif // SCHEDULER_H
