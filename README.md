@@ -54,3 +54,9 @@ bash save.sh
 ```bash
 bash join.sh
 ```
+
+### Update CMakeLists.txt when adding new Classes or Algorithms
+
+```bash
+bash cmakegen.sh
+```
