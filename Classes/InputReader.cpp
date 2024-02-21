@@ -1,4 +1,4 @@
-#include <InputReader.h>
+#include "InputReader.h"
 
 void InputReader::read(InputStorage &inputStorage)
 {

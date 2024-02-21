@@ -2,7 +2,7 @@
 #define INPUTREADER_H
 
 #include <iostream>
-#include <InputStorage.h>
+#include "InputStorage.h"
 
 class InputReader
 {
