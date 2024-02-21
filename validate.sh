@@ -11,7 +11,7 @@ if [ $# -lt 2 ]; then
     echo "Error: Too few arguments" >&2
     exit 1
 elif [ $# -eq 2 ]; then
-    ./Build/Validator "$1" "$2"
+    ./Build/Validate "$1" "$2"
 else
-    ./Build/Validator "$1" "$2" "$3"
+    ./Build/Validate "$1" "$2" "$3"
 fi
