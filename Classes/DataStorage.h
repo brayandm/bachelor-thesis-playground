@@ -24,6 +24,8 @@ public:
     std::vector<std::vector<std::vector<double>>> st;
 
     std::vector<double> G;
+
+    void fitSize();
 };
 
 #endif // DATASTORAGE_H
