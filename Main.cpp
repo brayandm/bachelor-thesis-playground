@@ -3,22 +3,7 @@
 #include <bits/stdc++.h>
 #include "Algorithms/Scheduler.h"
 
-using namespace std;
-
-#ifdef LOCAL
-#define debugMode true
-#include "/home/brayand/debugger.h"
-#else
-#define debugMode false
-#define db(...) false
-#define dbl(...) false
-#define dbg(...) false
-#define dbm(...) false
-#define dbs(...) false
-#define dbas(...) false
-#endif
-
-int32_t main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     if (argc >= 2)
         freopen(argv[1], "r", stdin);
@@ -26,8 +11,8 @@ int32_t main(int argc, char *argv[])
     if (argc >= 3)
         freopen(argv[2], "w", stdout);
 
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
 
     Scheduler scheduler;
 
