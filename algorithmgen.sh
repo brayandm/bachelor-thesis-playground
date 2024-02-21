@@ -23,4 +23,4 @@ cat > "$cpp_file" <<EOF
 #include "$algorithm_name.h"
 EOF
 
-echo "$algorithm_name class files have been created."
+echo "$algorithm_name algorithm files have been created."
