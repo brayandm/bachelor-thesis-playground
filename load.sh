@@ -9,9 +9,13 @@ experiment_name=$(basename "$experiment_dir")
 if [[ ! -z "$experiment_name" ]]; then
     rm -rf Classes/*
 
+    rm -rf Algorithms/*
+
     rm -f Main.cpp
 
     cp -r "Experiments/$experiment_name/Classes/." Classes/
+
+    cp -r "Experiments/$experiment_name/Algorithms/." Algorithms/
 
     cp "Experiments/$experiment_name/Main.cpp" Main.cpp
 
