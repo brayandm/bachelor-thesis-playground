@@ -7,7 +7,7 @@
 class Validator
 {
 public:
-    void validateResult(DataStorage &dataStorage);
+    static void validateResult(DataStorage &dataStorage);
 };
 
 #endif // VALIDATOR_H

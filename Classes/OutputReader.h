@@ -8,7 +8,7 @@
 class OutputReader
 {
 public:
-    void read(InputStorage &inputStorage, OutputStorage &outputStorage);
+    static void read(InputStorage &inputStorage, OutputStorage &outputStorage);
 };
 
 #endif // OUTPUTREADER_H

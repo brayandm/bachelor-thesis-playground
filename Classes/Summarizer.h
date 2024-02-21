@@ -9,7 +9,7 @@
 class Summarizer
 {
 public:
-    void summarize(DataStorage &dataStorage, Precalculator &precalculator, DataTransmissionCalculator &dataTransmissionCalculator);
+    static void summarize(DataStorage &dataStorage, Precalculator &precalculator, DataTransmissionCalculator &dataTransmissionCalculator);
 };
 
 #endif // SUMMARIZER_H
