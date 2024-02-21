@@ -13,7 +13,6 @@ This repository contains the code and data for my bachelor's thesis. The thesis 
 -   [ ] Add total summary experiments to generate overall results, plots, tables and yaml files
 -   [ ] Dockerize the project
 -   [ ] Try to do something to not search code in old experiments, maybe some regular expresion
--   [x] Create Script to Generate Algorithm's Template and another for Class's Template
 
 ## Commands
 
