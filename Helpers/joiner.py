@@ -19,33 +19,44 @@ def remove_include_statements(file, include_statements):
 
 
 def main():
-    directory = "Classes/"
+
+    directories = ["Classes/", "Algorithms/"]
+
     main_file = "Main.cpp"
-    class_files = get_class_files(directory)
 
     include_statements = []
 
-    for header_file, cpp_file in class_files:
-        include_statements.append(f'#include "{header_file}"')
-        include_statements.append(f'#include "{directory}{header_file}"')
+    for directory in directories:
+
+        class_files = get_class_files(directory)
+
+        for header_file, cpp_file in class_files:
+            include_statements.append(f'#include "{header_file}"')
+            include_statements.append(f'#include "{directory}{header_file}"')
+            include_statements.append(f'#include "../{directory}{header_file}"')
 
     combined_header_content = ""
-
-    for header_file, cpp_file in class_files:
-        header_content = extract_file_content(os.path.join(directory, header_file))
-
-        header_content = remove_include_statements(header_content, include_statements)
-
-        combined_header_content += header_content + "\n"
-
     combined_cpp_content = ""
 
-    for header_file, cpp_file in class_files:
-        cpp_content = extract_file_content(os.path.join(directory, cpp_file))
+    for directory in directories:
 
-        cpp_content = remove_include_statements(cpp_content, include_statements)
+        class_files = get_class_files(directory)
 
-        combined_cpp_content += cpp_content + "\n"
+        for header_file, cpp_file in class_files:
+            header_content = extract_file_content(os.path.join(directory, header_file))
+
+            header_content = remove_include_statements(
+                header_content, include_statements
+            )
+
+            combined_header_content += header_content + "\n"
+
+        for header_file, cpp_file in class_files:
+            cpp_content = extract_file_content(os.path.join(directory, cpp_file))
+
+            cpp_content = remove_include_statements(cpp_content, include_statements)
+
+            combined_cpp_content += cpp_content + "\n"
 
     main_content = extract_file_content(main_file)
 
