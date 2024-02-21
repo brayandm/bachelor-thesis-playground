@@ -7,6 +7,11 @@ experiment_dir=$(find "Experiments/" -type d -name "exp${experiment_number}_*" -
 experiment_name=$(basename "$experiment_dir")
 
 if [[ ! -z "$experiment_name" ]]; then
+
+    mkdir -p "Classes"
+
+    mkdir -p "Algorithms"
+
     rm -rf Classes/*
 
     rm -rf Algorithms/*
