@@ -1,7 +1,7 @@
 #pragma GCC optimize("O3", "Ofast", "no-stack-protector", "unroll-loops", "omit-frame-pointer", "inline")
 
 #include <bits/stdc++.h>
-#include "Algorithms/ScheduleOneRun.h"
+#include "Algorithms/Scheduler.h"
 
 using namespace std;
 
@@ -29,9 +29,9 @@ int32_t main(int argc, char *argv[])
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    ScheduleOneRun scheduleOneRun;
+    Scheduler scheduler;
 
-    scheduleOneRun.run();
+    scheduler.run();
 
     return 0;
 }
