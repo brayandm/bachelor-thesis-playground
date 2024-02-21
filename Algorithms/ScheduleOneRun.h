@@ -1,13 +1,13 @@
 #ifndef SCHEDULEONERUN_H
 #define SCHEDULEONERUN_H
 
-#include "InputStorage.h"
-#include "InputReader.h"
-#include "DataStorage.h"
-#include "OutputStorage.h"
-#include "Precalculator.h"
-#include "DataTransmissionCalculator.h"
-#include "Printer.h"
+#include "../Classes/InputStorage.h"
+#include "../Classes/InputReader.h"
+#include "../Classes/DataStorage.h"
+#include "../Classes/OutputStorage.h"
+#include "../Classes/Precalculator.h"
+#include "../Classes/DataTransmissionCalculator.h"
+#include "../Classes/Printer.h"
 #include <vector>
 #include <algorithm>
 

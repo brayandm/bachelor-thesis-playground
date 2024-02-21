@@ -1,7 +1,7 @@
 #pragma GCC optimize("O3", "Ofast", "no-stack-protector", "unroll-loops", "omit-frame-pointer", "inline")
 
 #include <bits/stdc++.h>
-#include "Classes/Scheduler.h"
+#include "Algorithms/ScheduleOneRun.h"
 
 using namespace std;
 
@@ -29,81 +29,9 @@ int32_t main(int argc, char *argv[])
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    Scheduler scheduler;
+    ScheduleOneRun scheduleOneRun;
 
-    scheduler.reader();
-
-    vector<tuple<int, double, int>> frames;
-
-    for (int j = 0; j < scheduler.J; j++)
-    {
-        frames.push_back({scheduler.amountTTIs[j], scheduler.TBS[j], j});
-    }
-
-    sort(frames.begin(), frames.end());
-
-    vector<vector<pair<int, int>>> resourceBlockOcupation(scheduler.T, vector<pair<int, int>>(scheduler.R, {-1, -1}));
-
-    for (auto frame : frames)
-    {
-        int j = get<2>(frame);
-
-        double g = 0;
-
-        vector<tuple<int, int, int>> ocuppiedCells;
-
-        for (int t = scheduler.firstTTI[j]; t < scheduler.firstTTI[j] + scheduler.amountTTIs[j]; t++)
-        {
-            int bestRBG = -1;
-            int bestCell = -1;
-            double maxSINR0 = -1e9;
-
-            for (int r = 0; r < scheduler.R; r++)
-            {
-                if (resourceBlockOcupation[t][r] != pair<int, int>(-1, -1))
-                    continue;
-
-                for (int k = 0; k < scheduler.K; k++)
-                {
-                    if (scheduler.s0[k][r][scheduler.userId[j]][t] > maxSINR0)
-                    {
-                        maxSINR0 = scheduler.s0[k][r][scheduler.userId[j]][t];
-                        bestRBG = r;
-                        bestCell = k;
-                    }
-                }
-            }
-
-            if (bestRBG != -1)
-            {
-                resourceBlockOcupation[t][bestRBG] = {bestCell, scheduler.userId[j]};
-                ocuppiedCells.push_back({t, bestRBG, bestCell});
-                scheduler.p[bestCell][bestRBG][scheduler.userId[j]][t] = 1;
-                scheduler.b[bestCell][bestRBG][scheduler.userId[j]][t] = true;
-
-                g += scheduler.computeGforFrameWithoutInterferences(j, t);
-
-                if (g > scheduler.TBS[j] + scheduler.EPS)
-                    break;
-            }
-        }
-
-        if (g < scheduler.TBS[j] + scheduler.EPS)
-        {
-            for (auto cell : ocuppiedCells)
-            {
-                int t = get<0>(cell);
-                int r = get<1>(cell);
-                int k = get<2>(cell);
-
-                resourceBlockOcupation[t][r] = {-1, -1};
-                scheduler.p[k][r][scheduler.userId[j]][t] = 0;
-                scheduler.b[k][r][scheduler.userId[j]][t] = false;
-            }
-        }
-    }
-
-    scheduler.printResult();
+    scheduleOneRun.run();
 
     return 0;
 }
