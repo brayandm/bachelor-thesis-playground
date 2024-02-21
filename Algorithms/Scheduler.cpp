@@ -3,13 +3,8 @@
 void Scheduler::run()
 {
     DataStorage dataStorage;
-    InputReader inputReader;
-
-    inputReader.read(dataStorage.input);
-
+    InputReader::read(dataStorage.input);
     dataStorage.fitSize();
-
-    DataTransmissionCalculator dataTransmissionCalculator;
 
     std::vector<std::tuple<int, double, int>> frames;
 
@@ -59,7 +54,7 @@ void Scheduler::run()
                 dataStorage.output.p[bestCell][bestRBG][dataStorage.input.userId[j]][t] = 1;
                 dataStorage.output.b[bestCell][bestRBG][dataStorage.input.userId[j]][t] = true;
 
-                g += dataTransmissionCalculator.computeGforFrameWithoutInterferences(dataStorage, j, t);
+                g += DataTransmissionCalculator::computeGforFrameWithoutInterferences(dataStorage, j, t);
 
                 if (g > dataStorage.input.TBS[j] + EPS)
                     break;
@@ -81,6 +76,5 @@ void Scheduler::run()
         }
     }
 
-    Printer printer;
-    printer.printResult(dataStorage);
+    Printer::printResult(dataStorage);
 }

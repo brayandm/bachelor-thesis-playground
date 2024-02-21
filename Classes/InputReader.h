@@ -7,7 +7,7 @@
 class InputReader
 {
 public:
-    void read(InputStorage &inputStorage);
+    static void read(InputStorage &inputStorage);
 };
 
 #endif // INPUTREADER_H

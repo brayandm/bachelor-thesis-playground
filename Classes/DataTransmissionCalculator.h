@@ -9,11 +9,11 @@ class DataTransmissionCalculator
 public:
     static const int W = 192;
 
-    void computeGfromPinT(DataStorage &dataStorage, int t);
+    static void computeGfromPinT(DataStorage &dataStorage, int t);
 
-    double computeGforFrameWithoutInterferences(DataStorage &dataStorage, int j);
+    static double computeGforFrameWithoutInterferences(DataStorage &dataStorage, int j);
 
-    double computeGforFrameWithoutInterferences(DataStorage &dataStorage, int j, int t);
+    static double computeGforFrameWithoutInterferences(DataStorage &dataStorage, int j, int t);
 };
 
 #endif // DATATRANSMISSIONCALCULATOR_H
