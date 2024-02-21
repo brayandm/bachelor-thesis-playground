@@ -261,6 +261,8 @@ void Scheduler::validateOutput()
                 {
                     assert(p[k][r][n][t] >= 0);
 
+                    assert((p[k][r][n][t] == 0) ^ b[k][r][n][t]);
+
                     sumOverN += p[k][r][n][t];
                 }
 
