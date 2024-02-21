@@ -7,7 +7,6 @@ class DataStorage
 {
 public:
     std::vector<std::vector<std::vector<std::vector<double>>>> expD;
-
     std::vector<std::vector<int>> framesInTTI;
     std::vector<std::vector<bool>> dataUserInTTI;
 
