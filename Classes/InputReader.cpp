@@ -4,6 +4,9 @@ void InputReader::read(InputStorage &inputStorage)
 {
     std::cin >> inputStorage.N >> inputStorage.K >> inputStorage.T >> inputStorage.R;
 
+    inputStorage.s0.resize(inputStorage.K, std::vector<std::vector<std::vector<double>>>(inputStorage.R, std::vector<std::vector<double>>(inputStorage.N, std::vector<double>(inputStorage.T))));
+    inputStorage.d.resize(inputStorage.K, std::vector<std::vector<std::vector<double>>>(inputStorage.N, std::vector<std::vector<double>>(inputStorage.R, std::vector<double>(inputStorage.N))));
+
     for (int t = 0; t < inputStorage.T; t++)
         for (int k = 0; k < inputStorage.K; k++)
             for (int r = 0; r < inputStorage.R; r++)
