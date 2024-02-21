@@ -1,17 +1,17 @@
 #include "Summarizer.h"
 
-void Summarizer::summarize(DataStorage &dataStorage, Precalculator &precalculator, DataTransmissionCalculator &dataTransmissionCalculator)
+void Summarizer::summarize(DataStorage &dataStorage)
 {
     const std::string redColor = "\033[31m";
     const std::string yellowColor = "\033[33m";
     const std::string greenColor = "\033[32m";
     const std::string resetColor = "\033[0m";
 
-    precalculator.precalculateUtils(dataStorage);
+    Precalculator::precalculateUtils(dataStorage);
 
     for (int t = 0; t < dataStorage.input.T; t++)
     {
-        dataTransmissionCalculator.computeGfromPinT(dataStorage, t);
+        DataTransmissionCalculator::computeGfromPinT(dataStorage, t);
     }
 
     int totalDelivered = 0;
