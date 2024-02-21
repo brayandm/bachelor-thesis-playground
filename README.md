@@ -12,6 +12,10 @@ This repository contains the code and data for my bachelor's thesis. The thesis 
 -   [ ] Add the test cases generator
 -   [ ] Add total summary experiments to generate overall results, plots, tables and yaml files
 -   [ ] Dockerize the project
+-   [ ] Try to do something to not search code in old experiments, maybe some regular expresion
+-   [ ] Create Script to Generate Algorithm's Template
+-   [ ] Make a CMake generator to avoid updating CMake Manually
+-   [x] Update joined and snapshots to include new folder Algorithms
 
 ## Commands
 

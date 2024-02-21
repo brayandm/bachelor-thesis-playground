@@ -22,11 +22,15 @@ bash join.sh
 
 mkdir -p "Experiments/$formatted_experiment_name/Classes"
 
+mkdir -p "Experiments/$formatted_experiment_name/Algorithms"
+
 cp Main.cpp "Experiments/$formatted_experiment_name/Main.cpp"
 
 cp Joined.cpp "Experiments/$formatted_experiment_name/Joined.cpp"
 
 cp -r Classes/* "Experiments/$formatted_experiment_name/Classes/"
+
+cp -r Algorithms/* "Experiments/$formatted_experiment_name/Algorithms/"
 
 echo "{
   \"name\": \"$experiment_name\",

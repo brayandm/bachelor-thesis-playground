@@ -4,7 +4,7 @@
 #include "Classes/InputReader.h"
 #include "Classes/OutputReader.h"
 #include "Classes/DataStorage.h"
-#include "Classes/Summarizer.h"
+#include "Classes/Validator.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
     OutputReader::read(dataStorage.input, dataStorage.output);
 
-    Summarizer::summarize(dataStorage);
+    Validator::validateResult(dataStorage);
 
     return 0;
 }
