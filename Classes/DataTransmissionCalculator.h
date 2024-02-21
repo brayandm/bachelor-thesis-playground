@@ -1,0 +1,9 @@
+#ifndef DATATRANSMISSIONCALCULATOR_H
+#define DATATRANSMISSIONCALCULATOR_H
+
+class DataTransmissionCalculator
+{
+public:
+};
+
+#endif // DATATRANSMISSIONCALCULATOR_H
