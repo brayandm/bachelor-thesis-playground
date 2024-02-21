@@ -1,7 +1,6 @@
 #pragma GCC optimize("O3", "Ofast", "no-stack-protector", "unroll-loops", "omit-frame-pointer", "inline")
 
 #include <bits/stdc++.h>
-#include <bits/stdc++.h>
 #include "Classes/InputReader.h"
 #include "Classes/OutputReader.h"
 #include "Classes/DataStorage.h"
