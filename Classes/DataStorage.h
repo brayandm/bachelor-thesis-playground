@@ -2,10 +2,15 @@
 #define DATASTORAGE_H
 
 #include <vector>
+#include "InputStorage.h"
+#include "OutputStorage.h"
 
 class DataStorage
 {
 public:
+    InputStorage input;
+    OutputStorage output;
+
     std::vector<std::vector<std::vector<std::vector<double>>>> expD;
     std::vector<std::vector<int>> framesInTTI;
     std::vector<std::vector<bool>> dataUserInTTI;

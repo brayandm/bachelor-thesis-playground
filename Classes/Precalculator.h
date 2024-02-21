@@ -9,9 +9,9 @@
 class Precalculator
 {
 public:
-    void precalculateUtils(InputStorage &inputStorage, DataStorage &dataStorage);
+    void precalculateUtils(DataStorage &dataStorage);
 
-    void precalculateFactors(InputStorage &inputStorage, DataStorage &dataStorage);
+    void precalculateFactors(DataStorage &dataStorage);
 };
 
 #endif // PRECALCULATOR_H
