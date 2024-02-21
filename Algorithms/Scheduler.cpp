@@ -7,6 +7,8 @@ void Scheduler::run()
 
     inputReader.read(dataStorage.input);
 
+    dataStorage.fitSize();
+
     DataTransmissionCalculator dataTransmissionCalculator;
 
     std::vector<std::tuple<int, double, int>> frames;
