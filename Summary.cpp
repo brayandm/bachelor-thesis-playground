@@ -6,7 +6,7 @@
 #include "Classes/DataStorage.h"
 #include "Classes/Summarizer.h"
 
-int32_t main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     if (argc >= 2)
         freopen(argv[1], "r", stdin);
