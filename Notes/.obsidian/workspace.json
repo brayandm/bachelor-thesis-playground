@@ -1,34 +1,14 @@
 {
   "main": {
-    "id": "65a96ed3918ce65e",
+    "id": "df06a2e328422069",
     "type": "split",
     "children": [
       {
-        "id": "197fefdf56b7ebc0",
+        "id": "b9c285056a817eb1",
         "type": "tabs",
-        "dimension": 49.36548223350254,
         "children": [
           {
-            "id": "c5254b42f20b7d27",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Main.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "d409c5654d5b7ac9",
-        "type": "tabs",
-        "dimension": 50.63451776649747,
-        "children": [
-          {
-            "id": "6f375c87ffb90370",
+            "id": "f4c3833d20f0510a",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -41,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "b08df50e3010485d",
+    "id": "3037402af1fc247e",
     "type": "split",
     "children": [
       {
-        "id": "506e728b4725df37",
+        "id": "9a41abdb17c39db8",
         "type": "tabs",
         "children": [
           {
-            "id": "3550f3c3634e1a63",
+            "id": "d80e36e4bb51b9b4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -59,12 +39,12 @@
             }
           },
           {
-            "id": "bb381c3cfd9fbb39",
+            "id": "8067f77137e1aead",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Formulas",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +54,7 @@
             }
           },
           {
-            "id": "82fd8a607df167a5",
+            "id": "4d52a8d945d85928",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -88,15 +68,15 @@
     "width": 300
   },
   "right": {
-    "id": "741d20ac12108b73",
+    "id": "bc77a4bb668bda4c",
     "type": "split",
     "children": [
       {
-        "id": "a06587805abf9ec5",
+        "id": "237c04cb982e1e5b",
         "type": "tabs",
         "children": [
           {
-            "id": "8968510723f4d364",
+            "id": "454bc5cbaf5036af",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -112,7 +92,7 @@
             }
           },
           {
-            "id": "c2397c3c345e516c",
+            "id": "779d11a39663592b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -123,7 +103,7 @@
             }
           },
           {
-            "id": "4dd82e19822ac238",
+            "id": "7a04c2dc493e2f65",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -134,7 +114,7 @@
             }
           },
           {
-            "id": "16077f62299ee6b8",
+            "id": "4775a5849743d32a",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -158,14 +138,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3550f3c3634e1a63",
+  "active": "f4c3833d20f0510a",
   "lastOpenFiles": [
-    "References/hw icpc fall challenge 2023 by gvastash.pdf",
-    "References/lu966611ohjr.tmp",
     "Main.md",
-    "Multiple iteration - single frame.md",
+    "References/hw icpc fall challenge 2023 by gvastash.pdf",
+    "References/73042_MAAZ_2017_archivage.pdf",
     "References/99357_GUIRAUD_2021_archivage.pdf",
-    "Formulas.md",
-    "Welcome.md"
+    "Multiple iteration - single frame.md",
+    "Formulas.md"
   ]
 }
