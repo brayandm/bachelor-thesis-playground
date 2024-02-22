@@ -4,11 +4,29 @@
     "type": "split",
     "children": [
       {
-        "id": "b9c285056a817eb1",
+        "id": "c503a8ce961b0132",
         "type": "tabs",
         "children": [
           {
-            "id": "f4c3833d20f0510a",
+            "id": "9b7d44a9bbb4c87d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Main.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "e0b5a42cfcc866d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "89b61cac9f77c10d",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -81,6 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Main.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Main.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +138,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Main.md"
+              }
             }
           }
         ]
@@ -138,13 +160,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f4c3833d20f0510a",
+  "active": "9b7d44a9bbb4c87d",
   "lastOpenFiles": [
+    "References/99357_GUIRAUD_2021_archivage.pdf",
     "Main.md",
+    "Multiple iteration - single frame.md",
     "References/hw icpc fall challenge 2023 by gvastash.pdf",
     "References/73042_MAAZ_2017_archivage.pdf",
-    "References/99357_GUIRAUD_2021_archivage.pdf",
-    "Multiple iteration - single frame.md",
     "Formulas.md"
   ]
 }

@@ -16,3 +16,9 @@
 ## Algorithms
 
 - [[Multiple iteration - single frame]]
+
+## References
+
+- [[hw icpc fall challenge 2023 by gvastash.pdf]]
+- [[99357_GUIRAUD_2021_archivage.pdf]]
+- [[73042_MAAZ_2017_archivage.pdf]]
