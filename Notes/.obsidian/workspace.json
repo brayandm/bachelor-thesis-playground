@@ -6,16 +6,15 @@
       {
         "id": "c503a8ce961b0132",
         "type": "tabs",
+        "dimension": 80.6472081218274,
         "children": [
           {
             "id": "9b7d44a9bbb4c87d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Main.md",
-                "mode": "source",
-                "source": false
+                "file": "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf"
               }
             }
           }
@@ -24,6 +23,7 @@
       {
         "id": "e0b5a42cfcc866d9",
         "type": "tabs",
+        "dimension": 19.35279187817259,
         "children": [
           {
             "id": "89b61cac9f77c10d",
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Main.md",
+                "file": "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Main.md",
+                "file": "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Main.md"
+                "file": "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf"
               }
             }
           }
@@ -162,11 +162,16 @@
   },
   "active": "9b7d44a9bbb4c87d",
   "lastOpenFiles": [
-    "References/99357_GUIRAUD_2021_archivage.pdf",
     "Main.md",
+    "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf",
+    "Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf.md",
+    "Formulas.md",
     "Multiple iteration - single frame.md",
+    "References/HW ICPC Fall Challenge 2023 by gvastash.pdf",
+    "References/Deterministic scheduling of periodic datagrams for low\nlatency in 5G and beyond.pdf",
+    "References/Radio resource allocation in 5G wireless networks.pdf",
+    "References/99357_GUIRAUD_2021_archivage.pdf",
     "References/hw icpc fall challenge 2023 by gvastash.pdf",
-    "References/73042_MAAZ_2017_archivage.pdf",
-    "Formulas.md"
+    "References/73042_MAAZ_2017_archivage.pdf"
   ]
 }

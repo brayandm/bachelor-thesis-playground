@@ -19,6 +19,6 @@
 
 ## References
 
-- [[hw icpc fall challenge 2023 by gvastash.pdf]]
-- [[99357_GUIRAUD_2021_archivage.pdf]]
-- [[73042_MAAZ_2017_archivage.pdf]]
+- [[HW ICPC Fall Challenge 2023 by gvastash.pdf]]
+- [[Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf]]
+- [[Radio resource allocation in 5G wireless networks.pdf]]
