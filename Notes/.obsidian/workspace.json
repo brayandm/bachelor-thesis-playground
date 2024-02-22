@@ -6,7 +6,6 @@
       {
         "id": "c503a8ce961b0132",
         "type": "tabs",
-        "dimension": 56.91624365482234,
         "children": [
           {
             "id": "9b7d44a9bbb4c87d",
@@ -14,25 +13,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Main.md",
+                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
                 "mode": "source",
                 "source": false
               }
-            }
-          }
-        ]
-      },
-      {
-        "id": "e0b5a42cfcc866d9",
-        "type": "tabs",
-        "dimension": 43.08375634517766,
-        "children": [
-          {
-            "id": "89b61cac9f77c10d",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
         ]
@@ -101,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Main.md",
+                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Main.md",
+                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Main.md"
+                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md"
               }
             }
           }
@@ -162,12 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9b7d44a9bbb4c87d",
+  "active": "d80e36e4bb51b9b4",
   "lastOpenFiles": [
-    "Formulas.md",
     "Main.md",
-    "Multiple iteration - single frame.md",
     "References/Radio resource allocation in 5G wireless networks/Notes.md",
+    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
+    "Formulas.md",
+    "Multiple iteration - single frame.md",
     "References/Radio resource allocation in 5G wireless networks/Radio resource allocation in 5G wireless networks.pdf",
     "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf",
     "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",

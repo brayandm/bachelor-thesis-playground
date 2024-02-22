@@ -20,6 +20,7 @@
 ## References
 
 - [[HW ICPC Fall Challenge 2023 by gvastash.pdf]]
+	- [[References/HW ICPC Fall Challenge 2023 by gvastash/Notes|Notes]]
 - [[Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf]]
 - [[Radio resource allocation in 5G wireless networks.pdf]]
-	- [[Notes]]
+	- [[References/Radio resource allocation in 5G wireless networks/Notes|Notes]]
