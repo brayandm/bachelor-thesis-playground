@@ -6,7 +6,7 @@
       {
         "id": "197fefdf56b7ebc0",
         "type": "tabs",
-        "dimension": 63.70558375634518,
+        "dimension": 49.36548223350254,
         "children": [
           {
             "id": "c5254b42f20b7d27",
@@ -19,26 +19,13 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "8d3271c5d7ec2d13",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Formulas.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "d409c5654d5b7ac9",
         "type": "tabs",
-        "dimension": 36.29441624365482,
+        "dimension": 50.63451776649747,
         "children": [
           {
             "id": "6f375c87ffb90370",
@@ -171,11 +158,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f375c87ffb90370",
+  "active": "3550f3c3634e1a63",
   "lastOpenFiles": [
-    "Formulas.md",
+    "References/hw icpc fall challenge 2023 by gvastash.pdf",
+    "References/lu966611ohjr.tmp",
     "Main.md",
     "Multiple iteration - single frame.md",
+    "References/99357_GUIRAUD_2021_archivage.pdf",
+    "Formulas.md",
     "Welcome.md"
   ]
 }
