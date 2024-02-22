@@ -22,3 +22,4 @@
 - [[HW ICPC Fall Challenge 2023 by gvastash.pdf]]
 - [[Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf]]
 - [[Radio resource allocation in 5G wireless networks.pdf]]
+	- [[Notes]]

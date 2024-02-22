@@ -1,0 +1,9 @@
+The document describes two main approaches for power allocation in Resource Block Groups (RBGs):
+
+Centralized Methods: These methods are based on convex optimization, which is a mathematical technique for solving certain types of optimization problems. Convex optimization is known for its properties that ensure finding the global optimum of a problem under certain conditions. These centralized methods require a global view of the network state to make power allocation decisions, which can involve a high signaling load and centralized processing.
+
+Decentralized Methods Based on Non-Cooperative Game Theory: These methods allow each network entity (for example, each eNodeB in a cellular network) to make independent decisions about power allocation based on local information and possibly limited interactions with other entities. Game theory provides a framework for analyzing how these individual decisions interact and lead to an equilibrium in the system. A key concept used is the Nash Equilibrium, where no player benefits from changing their strategy unilaterally, provided that the strategies of the other players remain constant.
+
+Furthermore, the document mentions a power control heuristic that is stable and is based on existing signaling messages in the system. This heuristic aims to avoid the waste of bandwidth by intercellular signaling and reduce inter-cell interference (ICI).
+
+Both centralized and decentralized methods are evaluated through simulations to compare their performance, energy efficiency, and convergence time. These approaches allow for dynamic allocation of transmission power in the RBGs, which is crucial for efficiently managing radio resources and improving network performance, especially in scenarios of high traffic density and in the presence of intercell interference.
