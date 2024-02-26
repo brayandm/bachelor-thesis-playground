@@ -13,6 +13,7 @@ class Scheduler
 {
 public:
     static const int EPS = 1e-9;
+    static const int numberOfIterations = 100;
     void run();
 };
 
