@@ -1,2 +1,4 @@
 # Notes
 - Schedule frames greedly one by one, minimize power consumption, and then sort again by power
+- When schedule new frame try to not break the constant of only one cell per RBG, you can schedule different frames on same pair (RBG, cell) but take into account the interference and then try to redistribute the power of the previous frames, that is at any moment keep all the previous completed frame as completed, if this cannot be satisfied then just ignore the current frame
+- To schedule just do greedily, trying to explote first the most initial SINR, try to maximize the power of the current RBG-cell at time T as much as you can in the way that others previous completed frame will be completed after that
