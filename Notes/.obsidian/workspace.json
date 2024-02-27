@@ -14,13 +14,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Main.md",
+                "file": "Multiple iteration - single frame.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d3936291c06fae63",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Multiple Iteration - sort frames by power consumption.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Main.md",
+                "file": "Multiple Iteration - sort frames by power consumption.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Main.md",
+                "file": "Multiple Iteration - sort frames by power consumption.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Main.md"
+                "file": "Multiple Iteration - sort frames by power consumption.md"
               }
             }
           }
@@ -147,13 +160,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9b7d44a9bbb4c87d",
+  "active": "d3936291c06fae63",
   "lastOpenFiles": [
-    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
-    "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Notes.md",
     "Main.md",
-    "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",
+    "Multiple Iteration - sort frames by power consumption.md",
     "Multiple iteration - single frame.md",
+    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
+    "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",
+    "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Notes.md",
     "References/Radio resource allocation in 5G wireless networks/Notes.md",
     "Formulas.md",
     "References/Radio resource allocation in 5G wireless networks/Radio resource allocation in 5G wireless networks.pdf",

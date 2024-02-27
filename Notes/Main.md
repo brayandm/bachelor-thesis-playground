@@ -19,6 +19,7 @@
 ## Algorithms
 
 - [[Multiple iteration - single frame]]
+- [[Multiple Iteration - sort frames by power consumption]]
 
 ## References
 
