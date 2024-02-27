@@ -11,6 +11,9 @@
 -   The total amount of power for an specific cell at any time from the same RBG should be less than $4$
 -   The total amount of power for an specific cell at any time from all RBGs should be less than $R$
 
+# Machine Learning
+- Because the funcion $f(x) = (x <= TBS[i])$ is not differentiable it will be difficult to make a gradient descent or Train a Neural Network  
+
 ## [[Formulas]]
 
 ## Algorithms

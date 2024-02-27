@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
+                "file": "Main.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
+                "file": "Main.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
+                "file": "Main.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md"
+                "file": "Main.md"
               }
             }
           }
@@ -149,9 +149,9 @@
   },
   "active": "9b7d44a9bbb4c87d",
   "lastOpenFiles": [
+    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
     "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Notes.md",
     "Main.md",
-    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
     "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",
     "Multiple iteration - single frame.md",
     "References/Radio resource allocation in 5G wireless networks/Notes.md",
