@@ -1,0 +1,4 @@
+{
+  "name": "Multirun One RBG per cell and sorting greedly",
+  "description": "Here we are implementing multiruns trying to scheduling greedly the data frames, after each run we sorted again the data frames in another order base on amount of RBGs consumed."
+}
