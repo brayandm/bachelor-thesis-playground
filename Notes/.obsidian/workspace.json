@@ -6,7 +6,7 @@
       {
         "id": "c503a8ce961b0132",
         "type": "tabs",
-        "dimension": 43.65482233502538,
+        "dimension": 43.654822335025386,
         "children": [
           {
             "id": "9b7d44a9bbb4c87d",
@@ -25,14 +25,18 @@
       {
         "id": "fbbb673525d4587c",
         "type": "tabs",
-        "dimension": 56.34517766497462,
+        "dimension": 56.345177664974614,
         "children": [
           {
             "id": "5ca7ca7e58d98e90",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -101,6 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Main.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,6 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Main.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +144,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Main.md"
+              }
             }
           }
         ]
@@ -158,17 +166,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5ca7ca7e58d98e90",
+  "active": "9b7d44a9bbb4c87d",
   "lastOpenFiles": [
-    "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Notes.md",
+    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
     "Main.md",
+    "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",
+    "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Notes.md",
     "Multiple iteration - single frame.md",
     "References/Radio resource allocation in 5G wireless networks/Notes.md",
     "Formulas.md",
     "References/Radio resource allocation in 5G wireless networks/Radio resource allocation in 5G wireless networks.pdf",
-    "References/HW ICPC Fall Challenge 2023 by gvastash/Notes.md",
     "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond.pdf",
-    "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",
     "References/HW ICPC Fall Challenge 2023 by gvastash",
     "References/Radio resource allocation in 5G wireless networks",
     "References/Deterministic scheduling of periodic datagrams for low latency in 5G and beyond",
