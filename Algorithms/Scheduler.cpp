@@ -88,7 +88,7 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
         int j = frameId;
         int n = dataStorage.input.userId[j];
 
-        std::vector<std::tuple<int, int, int, int>> options = {};
+        std::vector<std::tuple<double, int, int, int>> options = {};
 
         for (int t = dataStorage.input.firstTTI[j]; t < dataStorage.input.firstTTI[j] + dataStorage.input.amountTTIs[j]; t++)
         {
@@ -121,7 +121,7 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
         {
             // std::cout << std::get<0>(option) << " " << std::get<1>(option) << " " << std::get<2>(option) << " " << std::get<3>(option) << "\n";
 
-            int optionS0 = std::get<0>(option);
+            double optionS0 = std::get<0>(option);
             int optionT = std::get<1>(option);
             int optionR = std::get<2>(option);
             int optionK = std::get<3>(option);
