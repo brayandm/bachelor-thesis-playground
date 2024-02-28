@@ -104,8 +104,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
             for (int t = dataStorage.input.firstTTI[j]; t < dataStorage.input.firstTTI[j] + dataStorage.input.amountTTIs[j]; t++)
             {
-                if (TTIOccupation[t] == true)
-                    continue;
+                // if (TTIOccupation[t] == true)
+                //     continue;
 
                 for (int r = 0; r < dataStorage.input.R; r++)
                 {

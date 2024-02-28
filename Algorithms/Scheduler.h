@@ -13,7 +13,7 @@ class Scheduler
 {
 public:
     static const int EPS = 1e-9;
-    static const int numberOfIterations = 10;
+    static const int numberOfIterations = 1;
     void run();
     void step(DataStorage &dataStorage, std::vector<int> frameIds);
 };
