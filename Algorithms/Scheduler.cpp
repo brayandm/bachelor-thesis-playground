@@ -154,10 +154,10 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                 continue;
 
             // remove
-            if (resourceBlockUserAssignment[optionT][optionR].size())
-            {
-                continue;
-            }
+            // if (resourceBlockUserAssignment[optionT][optionR].size())
+            // {
+            //     continue;
+            // }
 
             // std::cout << "can assign\n";
 
