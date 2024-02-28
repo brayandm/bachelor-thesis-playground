@@ -17,7 +17,7 @@ void Scheduler::run()
 
     std::vector<int> frameIds;
 
-    for (auto t : frames)
+    for (auto &t : frames)
     {
         frameIds.push_back(std::get<2>(t));
     }
@@ -62,7 +62,7 @@ void Scheduler::run()
 
         frameIds.clear();
 
-        for (auto t : powerPerFrameWithId)
+        for (auto &t : powerPerFrameWithId)
         {
             frameIds.push_back(std::get<1>(t));
         }
@@ -73,102 +73,223 @@ void Scheduler::run()
 
 void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 {
-    std::vector<std::vector<std::vector<bool>>>
-        resourceOcupation(dataStorage.input.T, std::vector<std::vector<bool>>(dataStorage.input.R, std::vector<bool>(dataStorage.input.K, false)));
+    std::vector<std::vector<int>> resourceBlockCellAssignment(dataStorage.input.T, std::vector<int>(dataStorage.input.R, -1));
 
-    std::vector<std::vector<bool>>
-        resourceBlockOcupation(dataStorage.input.T, std::vector<bool>(dataStorage.input.R, false));
+    // user, s0, p, d
+    std::vector<std::vector<std::vector<std::tuple<int, int, int, int>>>> resourceBlockUserAssignment(dataStorage.input.T, std::vector<std::vector<std::tuple<int, int, int, int>>>(dataStorage.input.R, std::vector<std::tuple<int, int, int, int>>()));
 
-    std::vector<std::vector<bool>>
-        cellOcupation(dataStorage.input.T, std::vector<bool>(dataStorage.input.K, false));
+    std::vector<std::vector<int>> powerLeftPerCell(dataStorage.input.T, std::vector<int>(dataStorage.input.K, dataStorage.input.R));
 
-    for (auto frameId : frameIds)
+    for (auto &frameId : frameIds)
     {
         int j = frameId;
         int n = dataStorage.input.userId[j];
 
-        std::vector<std::tuple<int, int, int>> options = {};
+        std::vector<std::tuple<int, int, int, int>> options = {};
 
-        std::vector<int> TTIOccupation(dataStorage.input.T, false);
-
-        double g = 0;
-
-        bool isSent = false;
-
-        while (true)
+        for (int t = dataStorage.input.firstTTI[j]; t < dataStorage.input.firstTTI[j] + dataStorage.input.amountTTIs[j]; t++)
         {
-            int bestRBG = -1;
-            int bestTTI = -1;
-            int bestCell = -1;
-            double maxSINR0 = -1e9;
-
-            for (int t = dataStorage.input.firstTTI[j]; t < dataStorage.input.firstTTI[j] + dataStorage.input.amountTTIs[j]; t++)
+            for (int r = 0; r < dataStorage.input.R; r++)
             {
-                if (TTIOccupation[t] == true)
-                    continue;
-
-                for (int r = 0; r < dataStorage.input.R; r++)
+                if (resourceBlockCellAssignment[t][r] != -1)
                 {
-                    if (resourceBlockOcupation[t][r] == true)
-                        continue;
-
+                    options.push_back({dataStorage.input.s0[resourceBlockCellAssignment[t][r]][r][n][t], t, r, resourceBlockCellAssignment[t][r]});
+                }
+                else
+                {
                     for (int k = 0; k < dataStorage.input.K; k++)
                     {
-                        // if (cellOcupation[t][k] == true)
-                        //     continue;
-
-                        if (dataStorage.input.s0[k][r][n][t] > maxSINR0)
-                        {
-                            maxSINR0 = dataStorage.input.s0[k][r][n][t];
-                            bestRBG = r;
-                            bestTTI = t;
-                            bestCell = k;
-                        }
+                        options.push_back({dataStorage.input.s0[k][r][n][t], t, r, k});
                     }
                 }
             }
+        }
 
-            if (bestRBG != -1)
+        sort(options.rbegin(), options.rend());
+
+        for (auto &option : options)
+        {
+            int optionS0 = std::get<0>(option);
+            int optionT = std::get<1>(option);
+            int optionR = std::get<2>(option);
+            int optionK = std::get<3>(option);
+
+            if (resourceBlockCellAssignment[optionT][optionR] != -1 && resourceBlockCellAssignment[optionT][optionR] != optionK)
+                continue;
+
+            bool canAssign = true;
+
+            for (int r = 0; r < dataStorage.input.R; r++)
             {
-                resourceOcupation[bestTTI][bestRBG][bestCell] = true;
-                resourceBlockOcupation[bestTTI][bestRBG] = true;
-                cellOcupation[bestTTI][bestCell] = true;
-                TTIOccupation[bestTTI] = true;
-
-                dataStorage.output.p[bestCell][bestRBG][n][bestTTI] = 1;
-                dataStorage.output.b[bestCell][bestRBG][n][bestTTI] = true;
-                options.push_back({bestTTI, bestRBG, bestCell});
-
-                g = DataTransmissionCalculator::computeGforFrameWithoutInterferences(dataStorage, j);
-
-                if (g > dataStorage.input.TBS[j] + EPS)
+                if (resourceBlockCellAssignment[optionT][r] == optionK)
                 {
-                    isSent = true;
+                    for (auto &user : resourceBlockUserAssignment[optionT][r])
+                    {
+                        if (std::get<0>(user) == n)
+                        {
+                            canAssign = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (canAssign == false)
                     break;
+            }
+
+            if (canAssign == false)
+                continue;
+
+            double currentPower = initialPower;
+
+            double requiredPower = 0;
+
+            requiredPower += currentPower;
+
+            if (resourceBlockCellAssignment[optionT][optionR] != -1)
+            {
+                for (auto &user : resourceBlockUserAssignment[optionT][optionR])
+                {
+                    double userId = std::get<0>(user);
+                    double userS0 = std::get<1>(user);
+                    double userP = std::get<2>(user);
+                    double userD = std::get<3>(user);
+                    double totalSinr = userS0 * userP * userD;
+
+                    requiredPower += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
                 }
             }
-            else
+
+            if (requiredPower < powerLeftPerCell[optionT][optionK])
             {
-                for (auto option : options)
+                powerLeftPerCell[optionT][optionK] -= requiredPower;
+
+                double interference = 1;
+
+                for (auto &user : resourceBlockUserAssignment[optionT][optionR])
                 {
-                    int t = std::get<0>(option);
-                    int r = std::get<1>(option);
-                    int k = std::get<2>(option);
+                    double userId = std::get<0>(user);
+                    double userS0 = std::get<1>(user);
+                    double userP = std::get<2>(user);
+                    double userD = std::get<3>(user);
+                    double totalSinr = userS0 * userP * userD * exp(dataStorage.input.d[optionK][n][optionR][userId]);
 
-                    resourceOcupation[t][r][k] = false;
-                    resourceBlockOcupation[t][r] = false;
-                    cellOcupation[t][k] = false;
-                    TTIOccupation[t] = false;
+                    dataStorage.output.p[optionK][optionR][userId][optionT] += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
 
-                    dataStorage.output.p[k][r][n][t] = 0;
-                    dataStorage.output.b[k][r][n][t] = false;
+                    user = {userId, userS0, dataStorage.output.p[optionK][optionR][userId][optionT], userD * exp(dataStorage.input.d[optionK][n][optionR][userId])};
+
+                    interference *= exp(dataStorage.input.d[optionK][userId][optionR][n]);
                 }
 
-                options.clear();
+                if (resourceBlockCellAssignment[optionT][optionR] == -1)
+                {
+                    resourceBlockCellAssignment[optionT][optionR] = optionK;
+                }
 
-                isSent = false;
-                break;
+                resourceBlockUserAssignment[optionT][optionR].push_back({n, optionS0, currentPower, interference});
+
+                dataStorage.output.p[optionK][optionR][n][optionT] = currentPower;
+                dataStorage.output.b[optionK][optionR][n][optionT] = true;
             }
         }
     }
+
+    // std::vector<std::vector<std::vector<bool>>>
+    //     resourceOcupation(dataStorage.input.T, std::vector<std::vector<bool>>(dataStorage.input.R, std::vector<bool>(dataStorage.input.K, false)));
+
+    // std::vector<std::vector<bool>>
+    //     resourceBlockOcupation(dataStorage.input.T, std::vector<bool>(dataStorage.input.R, false));
+
+    // std::vector<std::vector<bool>>
+    //     cellOcupation(dataStorage.input.T, std::vector<bool>(dataStorage.input.K, false));
+
+    // for (auto frameId : frameIds)
+    // {
+    //     int j = frameId;
+    //     int n = dataStorage.input.userId[j];
+
+    //     std::vector<std::tuple<int, int, int>> options = {};
+
+    //     std::vector<int> TTIOccupation(dataStorage.input.T, false);
+
+    //     double g = 0;
+
+    //     bool isSent = false;
+
+    //     while (true)
+    //     {
+    //         int bestRBG = -1;
+    //         int bestTTI = -1;
+    //         int bestCell = -1;
+    //         double maxSINR0 = -1e9;
+
+    //         for (int t = dataStorage.input.firstTTI[j]; t < dataStorage.input.firstTTI[j] + dataStorage.input.amountTTIs[j]; t++)
+    //         {
+    //             if (TTIOccupation[t] == true)
+    //                 continue;
+
+    //             for (int r = 0; r < dataStorage.input.R; r++)
+    //             {
+    //                 if (resourceBlockOcupation[t][r] == true)
+    //                     continue;
+
+    //                 for (int k = 0; k < dataStorage.input.K; k++)
+    //                 {
+    //                     // if (cellOcupation[t][k] == true)
+    //                     //     continue;
+
+    //                     if (dataStorage.input.s0[k][r][n][t] > maxSINR0)
+    //                     {
+    //                         maxSINR0 = dataStorage.input.s0[k][r][n][t];
+    //                         bestRBG = r;
+    //                         bestTTI = t;
+    //                         bestCell = k;
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         if (bestRBG != -1)
+    //         {
+    //             resourceOcupation[bestTTI][bestRBG][bestCell] = true;
+    //             resourceBlockOcupation[bestTTI][bestRBG] = true;
+    //             cellOcupation[bestTTI][bestCell] = true;
+    //             TTIOccupation[bestTTI] = true;
+
+    //             dataStorage.output.p[bestCell][bestRBG][n][bestTTI] = 1;
+    //             dataStorage.output.b[bestCell][bestRBG][n][bestTTI] = true;
+    //             options.push_back({bestTTI, bestRBG, bestCell});
+
+    //             g = DataTransmissionCalculator::computeGforFrameWithoutInterferences(dataStorage, j);
+
+    //             if (g > dataStorage.input.TBS[j] + EPS)
+    //             {
+    //                 isSent = true;
+    //                 break;
+    //             }
+    //         }
+    //         else
+    //         {
+    //             for (auto option : options)
+    //             {
+    //                 int t = std::get<0>(option);
+    //                 int r = std::get<1>(option);
+    //                 int k = std::get<2>(option);
+
+    //                 resourceOcupation[t][r][k] = false;
+    //                 resourceBlockOcupation[t][r] = false;
+    //                 cellOcupation[t][k] = false;
+    //                 TTIOccupation[t] = false;
+
+    //                 dataStorage.output.p[k][r][n][t] = 0;
+    //                 dataStorage.output.b[k][r][n][t] = false;
+    //             }
+
+    //             options.clear();
+
+    //             isSent = false;
+    //             break;
+    //         }
+    //     }
+    // }
 }

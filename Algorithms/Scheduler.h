@@ -14,6 +14,7 @@ class Scheduler
 public:
     static const int EPS = 1e-9;
     static const int numberOfIterations = 10;
+    static constexpr double initialPower = 1.0;
     void run();
     void step(DataStorage &dataStorage, std::vector<int> frameIds);
 };
