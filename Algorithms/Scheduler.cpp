@@ -131,23 +131,23 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
             bool canAssign = true;
 
-            for (int r = 0; r < dataStorage.input.R; r++)
-            {
-                if (resourceBlockCellAssignment[optionT][r] == optionK)
-                {
-                    for (auto &user : resourceBlockUserAssignment[optionT][r])
-                    {
-                        if (std::get<0>(user) == n)
-                        {
-                            canAssign = false;
-                            break;
-                        }
-                    }
-                }
+            // for (int r = 0; r < dataStorage.input.R; r++)
+            // {
+            //     if (resourceBlockCellAssignment[optionT][r] == optionK)
+            //     {
+            //         for (auto &user : resourceBlockUserAssignment[optionT][r])
+            //         {
+            //             if (std::get<0>(user) == n)
+            //             {
+            //                 canAssign = false;
+            //                 break;
+            //             }
+            //         }
+            //     }
 
-                if (canAssign == false)
-                    break;
-            }
+            //     if (canAssign == false)
+            //         break;
+            // }
 
             if (canAssign == false)
                 continue;
