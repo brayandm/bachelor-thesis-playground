@@ -37,14 +37,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Main.md",
+                "file": "Formulas.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -171,7 +171,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2a706d854c0032dd",
+  "active": "d3936291c06fae63",
   "lastOpenFiles": [
     "Formulas.md",
     "Main.md",

@@ -1,4 +1,5 @@
 # Need to check
+- We can use several Cells with same RBG if there is only one user using all of them
 - In commit 16af07e150bdebce4efa84b400abef2a359676a7 if we set iterations to 1 and comment the following code then we got:
 
 Total delivered: 120 / 150
