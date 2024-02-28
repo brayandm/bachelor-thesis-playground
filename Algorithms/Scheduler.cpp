@@ -76,9 +76,10 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
     std::vector<std::vector<int>> resourceBlockCellAssignment(dataStorage.input.T, std::vector<int>(dataStorage.input.R, -1));
 
     // user, s0, p, d
-    std::vector<std::vector<std::vector<std::tuple<int, int, int, int>>>> resourceBlockUserAssignment(dataStorage.input.T, std::vector<std::vector<std::tuple<int, int, int, int>>>(dataStorage.input.R, std::vector<std::tuple<int, int, int, int>>()));
+    std::vector<std::vector<std::vector<std::tuple<int, double, double, double>>>> resourceBlockUserAssignment(dataStorage.input.T, std::vector<std::vector<std::tuple<int, double, double, double>>>(dataStorage.input.R, std::vector<std::tuple<int, double, double, double>>()));
 
-    std::vector<std::vector<int>> powerLeftPerCell(dataStorage.input.T, std::vector<int>(dataStorage.input.K, dataStorage.input.R));
+    std::vector<std::vector<double>> powerLeftPerCell(dataStorage.input.T, std::vector<double>(dataStorage.input.K, dataStorage.input.R));
+    std::vector<std::vector<std::vector<double>>> powerLeftPerRBGPerCell(dataStorage.input.T, std::vector<std::vector<double>>(dataStorage.input.R, std::vector<double>(dataStorage.input.K, 4.0)));
 
     std::vector<double> dataTransmissionPerFrame(dataStorage.input.J, 0);
 
