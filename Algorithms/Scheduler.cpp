@@ -230,9 +230,9 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                     cellRollbacks.push_back({optionT, optionR});
                 }
 
-                resourceBlockUserAssignment[optionT][optionR].push_back({n, optionS0, currentPower, interference});
-
                 RBGRollbacks.push_back({optionT, optionR});
+
+                resourceBlockUserAssignment[optionT][optionR].push_back({n, optionS0, currentPower, interference});
 
                 rollbacks.push_back({optionK, optionR, n, optionT, dataStorage.output.p[optionK][optionR][n][optionT], dataStorage.output.b[optionK][optionR][n][optionT]});
 
