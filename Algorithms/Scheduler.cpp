@@ -111,6 +111,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
         // std::cout << "frame: " << frameId << "\n";
 
+        std::vector<std::tuple<int, int, int, int, double, bool>> rollbacks;
+
         for (auto &option : options)
         {
             // std::cout << std::get<0>(option) << " " << std::get<1>(option) << " " << std::get<2>(option) << " " << std::get<3>(option) << "\n";
@@ -192,6 +194,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                     double userD = std::get<3>(user);
                     double totalSinr = userS0 * userP * userD * exp(dataStorage.input.d[optionK][n][optionR][userId]);
 
+                    rollbacks.push_back({optionK, optionR, userId, optionT, dataStorage.output.p[optionK][optionR][userId][optionT], dataStorage.output.b[optionK][optionR][userId][optionT]});
+
                     dataStorage.output.p[optionK][optionR][userId][optionT] += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
 
                     user = {userId, userS0, dataStorage.output.p[optionK][optionR][userId][optionT], userD * exp(dataStorage.input.d[optionK][n][optionR][userId])};
@@ -206,6 +210,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
                 resourceBlockUserAssignment[optionT][optionR].push_back({n, optionS0, currentPower, interference});
 
+                rollbacks.push_back({optionK, optionR, n, optionT, dataStorage.output.p[optionK][optionR][n][optionT], dataStorage.output.b[optionK][optionR][n][optionT]});
+
                 dataStorage.output.p[optionK][optionR][n][optionT] = currentPower;
                 dataStorage.output.b[optionK][optionR][n][optionT] = true;
 
@@ -215,6 +221,22 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
             if (dataTransmissionPerFrame[j] > dataStorage.input.TBS[j] + EPS)
             {
                 break;
+            }
+        }
+
+        if (dataTransmissionPerFrame[j] < dataStorage.input.TBS[j] + EPS)
+        {
+            for (auto rollback : rollbacks)
+            {
+                int k = std::get<0>(rollback);
+                int r = std::get<1>(rollback);
+                int userId = std::get<2>(rollback);
+                int t = std::get<3>(rollback);
+                double p = std::get<4>(rollback);
+                bool b = std::get<5>(rollback);
+
+                dataStorage.output.p[k][r][userId][t] = p;
+                dataStorage.output.b[k][r][userId][t] = b;
             }
         }
     }
