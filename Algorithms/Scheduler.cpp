@@ -117,6 +117,7 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
         std::vector<std::tuple<int, int>> RBGRollbacks;
         std::vector<std::tuple<int, int, double>> powerLeftRollbacks;
         std::vector<std::tuple<int, int, int, double>> powerLeftPerRBGPerCellRollbacks;
+        std::vector<std::tuple<int, int, int, std::tuple<int, double, double, double>>> userRollbacks;
 
         for (auto &option : options)
         {
@@ -197,6 +198,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
                 double interference = 1;
 
+                int id = 0;
+
                 for (auto &user : resourceBlockUserAssignment[optionT][optionR])
                 {
                     double userId = std::get<0>(user);
@@ -209,9 +212,16 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
                     dataStorage.output.p[optionK][optionR][userId][optionT] += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
 
+                    userRollbacks.push_back({optionT,
+                                             optionR,
+                                             id,
+                                             user});
+
                     user = {userId, userS0, dataStorage.output.p[optionK][optionR][userId][optionT], userD * exp(dataStorage.input.d[optionK][n][optionR][userId])};
 
                     interference *= exp(dataStorage.input.d[optionK][userId][optionR][n]);
+
+                    id++;
                 }
 
                 if (resourceBlockCellAssignment[optionT][optionR] == -1)
@@ -286,6 +296,16 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                 double powerLeft = std::get<3>(rollback);
 
                 powerLeftPerRBGPerCell[t][r][k] = powerLeft;
+            }
+
+            for (auto rollback : userRollbacks)
+            {
+                int t = std::get<0>(rollback);
+                int r = std::get<1>(rollback);
+                int id = std::get<2>(rollback);
+                std::tuple<int, double, double, double> user = std::get<3>(rollback);
+
+                resourceBlockUserAssignment[t][r][id] = user;
             }
 
             dataTransmissionPerFrame[j] = 0;
