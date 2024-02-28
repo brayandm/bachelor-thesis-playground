@@ -37,8 +37,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Formulas.md",
-                "mode": "preview",
+                "file": "Main.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Formulas.md",
+                "file": "Main.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Formulas.md",
+                "file": "Main.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Formulas.md"
+                "file": "Main.md"
               }
             }
           }
@@ -173,9 +173,9 @@
   },
   "active": "2a706d854c0032dd",
   "lastOpenFiles": [
+    "Formulas.md",
     "Main.md",
     "Multiple iteration - Multiple frames per (RBG, Cell) - Sort by power.md",
-    "Formulas.md",
     "Multiple Iteration - sort frames by power consumption.md",
     "Multiple iteration - single frame.md",
     "References/HW ICPC Fall Challenge 2023 by gvastash/HW ICPC Fall Challenge 2023 by gvastash.pdf",

@@ -1,3 +1,15 @@
+# Need to check
+- In commit 16af07e150bdebce4efa84b400abef2a359676a7 if we set iterations to 1 and comment the following code then we got:
+
+Total delivered: 120 / 150
+Total delivered: 443 / 829
+Total delivered: 184 / 184
+
+```
+if (TTIOccupation[t] == true)
+
+continue;
+```
 # General Notes
 
 -   There are $R$ RBGs
