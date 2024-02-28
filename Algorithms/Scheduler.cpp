@@ -112,6 +112,9 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
         // std::cout << "frame: " << frameId << "\n";
 
         std::vector<std::tuple<int, int, int, int, double, bool>> rollbacks;
+        std::vector<std::tuple<int, int>> cellRollbacks;
+        std::vector<std::tuple<int, int>> RBGRollbacks;
+        std::vector<std::tuple<int, int, double>> powerLeftRollbacks;
 
         for (auto &option : options)
         {
@@ -162,19 +165,19 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
             requiredPower += currentPower;
 
-            if (resourceBlockCellAssignment[optionT][optionR] != -1)
-            {
-                for (auto &user : resourceBlockUserAssignment[optionT][optionR])
-                {
-                    double userId = std::get<0>(user);
-                    double userS0 = std::get<1>(user);
-                    double userP = std::get<2>(user);
-                    double userD = std::get<3>(user);
-                    double totalSinr = userS0 * userP * userD;
+            // if (resourceBlockCellAssignment[optionT][optionR] != -1)
+            // {
+            //     for (auto &user : resourceBlockUserAssignment[optionT][optionR])
+            //     {
+            //         double userId = std::get<0>(user);
+            //         double userS0 = std::get<1>(user);
+            //         double userP = std::get<2>(user);
+            //         double userD = std::get<3>(user);
+            //         double totalSinr = userS0 * userP * userD;
 
-                    requiredPower += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
-                }
-            }
+            //         requiredPower += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
+            //     }
+            // }
 
             // std::cout << "required power: " << requiredPower << "\n";
 
@@ -182,33 +185,38 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
             if (requiredPower <= powerLeftPerCell[optionT][optionK])
             {
+                powerLeftRollbacks.push_back({optionT, optionK, powerLeftPerCell[optionT][optionK]});
+
                 powerLeftPerCell[optionT][optionK] -= requiredPower;
 
                 double interference = 1;
 
-                for (auto &user : resourceBlockUserAssignment[optionT][optionR])
-                {
-                    double userId = std::get<0>(user);
-                    double userS0 = std::get<1>(user);
-                    double userP = std::get<2>(user);
-                    double userD = std::get<3>(user);
-                    double totalSinr = userS0 * userP * userD * exp(dataStorage.input.d[optionK][n][optionR][userId]);
+                // for (auto &user : resourceBlockUserAssignment[optionT][optionR])
+                // {
+                //     double userId = std::get<0>(user);
+                //     double userS0 = std::get<1>(user);
+                //     double userP = std::get<2>(user);
+                //     double userD = std::get<3>(user);
+                //     double totalSinr = userS0 * userP * userD * exp(dataStorage.input.d[optionK][n][optionR][userId]);
 
-                    rollbacks.push_back({optionK, optionR, userId, optionT, dataStorage.output.p[optionK][optionR][userId][optionT], dataStorage.output.b[optionK][optionR][userId][optionT]});
+                //     rollbacks.push_back({optionK, optionR, userId, optionT, dataStorage.output.p[optionK][optionR][userId][optionT], dataStorage.output.b[optionK][optionR][userId][optionT]});
 
-                    dataStorage.output.p[optionK][optionR][userId][optionT] += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
+                //     dataStorage.output.p[optionK][optionR][userId][optionT] += totalSinr * (1 - exp(dataStorage.input.d[optionK][n][optionR][userId])) / (userS0 * userD);
 
-                    user = {userId, userS0, dataStorage.output.p[optionK][optionR][userId][optionT], userD * exp(dataStorage.input.d[optionK][n][optionR][userId])};
+                //     user = {userId, userS0, dataStorage.output.p[optionK][optionR][userId][optionT], userD * exp(dataStorage.input.d[optionK][n][optionR][userId])};
 
-                    interference *= exp(dataStorage.input.d[optionK][userId][optionR][n]);
-                }
+                //     interference *= exp(dataStorage.input.d[optionK][userId][optionR][n]);
+                // }
 
                 if (resourceBlockCellAssignment[optionT][optionR] == -1)
                 {
                     resourceBlockCellAssignment[optionT][optionR] = optionK;
+                    cellRollbacks.push_back({optionT, optionR});
                 }
 
                 resourceBlockUserAssignment[optionT][optionR].push_back({n, optionS0, currentPower, interference});
+
+                RBGRollbacks.push_back({optionT, optionR});
 
                 rollbacks.push_back({optionK, optionR, n, optionT, dataStorage.output.p[optionK][optionR][n][optionT], dataStorage.output.b[optionK][optionR][n][optionT]});
 
@@ -237,6 +245,31 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
                 dataStorage.output.p[k][r][userId][t] = p;
                 dataStorage.output.b[k][r][userId][t] = b;
+            }
+
+            for (auto rollback : cellRollbacks)
+            {
+                int t = std::get<0>(rollback);
+                int r = std::get<1>(rollback);
+
+                resourceBlockCellAssignment[t][r] = -1;
+            }
+
+            for (auto rollback : RBGRollbacks)
+            {
+                int t = std::get<0>(rollback);
+                int r = std::get<1>(rollback);
+
+                resourceBlockUserAssignment[t][r].pop_back();
+            }
+
+            for (auto rollback : powerLeftRollbacks)
+            {
+                int t = std::get<0>(rollback);
+                int k = std::get<1>(rollback);
+                double powerLeft = std::get<2>(rollback);
+
+                powerLeftPerCell[t][k] = powerLeft;
             }
 
             dataTransmissionPerFrame[j] = 0;
