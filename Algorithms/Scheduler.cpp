@@ -149,10 +149,10 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                 continue;
 
             // remove
-            // if (resourceBlockUserAssignment[optionT][optionR].size())
-            // {
-            //     continue;
-            // }
+            if (resourceBlockUserAssignment[optionT][optionR].size())
+            {
+                continue;
+            }
 
             // std::cout << "can assign\n";
 
@@ -238,6 +238,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                 dataStorage.output.p[k][r][userId][t] = p;
                 dataStorage.output.b[k][r][userId][t] = b;
             }
+
+            dataTransmissionPerFrame[j] = 0;
         }
     }
 
