@@ -80,6 +80,8 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
     std::vector<std::vector<int>> powerLeftPerCell(dataStorage.input.T, std::vector<int>(dataStorage.input.K, dataStorage.input.R));
 
+    std::vector<double> dataTransmissionPerFrame(dataStorage.input.J, 0);
+
     for (auto &frameId : frameIds)
     {
         int j = frameId;
@@ -107,8 +109,12 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
         sort(options.rbegin(), options.rend());
 
+        // std::cout << "frame: " << frameId << "\n";
+
         for (auto &option : options)
         {
+            // std::cout << std::get<0>(option) << " " << std::get<1>(option) << " " << std::get<2>(option) << " " << std::get<3>(option) << "\n";
+
             int optionS0 = std::get<0>(option);
             int optionT = std::get<1>(option);
             int optionR = std::get<2>(option);
@@ -140,6 +146,14 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
             if (canAssign == false)
                 continue;
 
+            // remove
+            // if (resourceBlockUserAssignment[optionT][optionR].size())
+            // {
+            //     continue;
+            // }
+
+            // std::cout << "can assign\n";
+
             double currentPower = initialPower;
 
             double requiredPower = 0;
@@ -160,7 +174,11 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
                 }
             }
 
-            if (requiredPower < powerLeftPerCell[optionT][optionK])
+            // std::cout << "required power: " << requiredPower << "\n";
+
+            // std::cout << "power left: " << powerLeftPerCell[optionT][optionK] << "\n";
+
+            if (requiredPower <= powerLeftPerCell[optionT][optionK])
             {
                 powerLeftPerCell[optionT][optionK] -= requiredPower;
 
@@ -190,6 +208,13 @@ void Scheduler::step(DataStorage &dataStorage, std::vector<int> frameIds)
 
                 dataStorage.output.p[optionK][optionR][n][optionT] = currentPower;
                 dataStorage.output.b[optionK][optionR][n][optionT] = true;
+
+                dataTransmissionPerFrame[j] += DataTransmissionCalculator::W * log2(1 + optionS0 * currentPower * interference);
+            }
+
+            if (dataTransmissionPerFrame[j] > dataStorage.input.TBS[j] + EPS)
+            {
+                break;
             }
         }
     }
