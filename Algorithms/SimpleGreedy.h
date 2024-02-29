@@ -9,6 +9,7 @@
 #include "../Classes/FrameSorter.h"
 #include "../Classes/SolutionManager.h"
 #include "../Classes/SolutionStore.h"
+#include "../Classes/DeliveryCalculator.h"
 #include <vector>
 #include <algorithm>
 

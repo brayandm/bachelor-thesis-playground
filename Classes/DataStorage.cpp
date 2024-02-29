@@ -19,3 +19,13 @@ void DataStorage::fitSize()
     output.p.resize(input.K, std::vector<std::vector<std::vector<double>>>(input.R, std::vector<std::vector<double>>(input.N, std::vector<double>(input.T))));
     output.b.resize(input.K, std::vector<std::vector<std::vector<bool>>>(input.R, std::vector<std::vector<bool>>(input.N, std::vector<bool>(input.T))));
 }
+
+void DataStorage::clear()
+{
+    output.clear();
+
+    for (int j = 0; j < G.size(); j++)
+    {
+        G[j] = 0;
+    }
+}
