@@ -9,7 +9,7 @@ public:
     std::vector<std::vector<std::vector<std::vector<double>>>> p;
     std::vector<std::vector<std::vector<std::vector<bool>>>> b;
 
-    void clean();
+    void clear();
 };
 
 #endif // OUTPUTSTORAGE_H

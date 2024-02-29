@@ -1,6 +1,6 @@
 #include "OutputStorage.h"
 
-void OutputStorage::clean()
+void OutputStorage::clear()
 {
     for (int k = 0; k < p.size(); k++)
     {
