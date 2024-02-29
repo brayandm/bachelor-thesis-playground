@@ -6,18 +6,24 @@ void SimpleGreedy::run()
     InputReader::read(dataStorage.input);
     dataStorage.fitSize();
 
+    SolutionManager solutionManager;
+
     SimpleGreedy::step(dataStorage, FrameSorter::getFramesSortByTTIAndTBS(dataStorage));
+    solutionManager.addSolution(dataStorage.output, 0);
 
     for (int iteration = 0; iteration < numberOfIterations; iteration++)
     {
         std::vector<int> frameIds = FrameSorter::getFramesSortRandom(dataStorage);
 
-        dataStorage.output.clean();
+        dataStorage.output.clear();
 
         SimpleGreedy::step(dataStorage, frameIds);
+        solutionManager.addSolution(dataStorage.output, 0);
     }
 
-    Printer::printResult(dataStorage);
+    SolutionStore bestSolution = solutionManager.getBestSolution();
+
+    Printer::printResult(bestSolution.output);
 }
 
 void SimpleGreedy::step(DataStorage &dataStorage, std::vector<int> frameIds)

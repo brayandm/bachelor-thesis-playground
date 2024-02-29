@@ -7,6 +7,8 @@
 #include "../Classes/DataTransmissionCalculator.h"
 #include "../Classes/Printer.h"
 #include "../Classes/FrameSorter.h"
+#include "../Classes/SolutionManager.h"
+#include "../Classes/SolutionStore.h"
 #include <vector>
 #include <algorithm>
 
