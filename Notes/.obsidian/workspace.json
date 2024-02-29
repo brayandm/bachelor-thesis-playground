@@ -35,11 +35,9 @@
             "id": "c20333a2630865da",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Codeforces Comments.md",
-                "mode": "preview",
-                "source": false
+                "file": "Images/comment-2.png"
               }
             }
           },
@@ -122,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Codeforces Comments.md",
+                "file": "Images/comment-2.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Codeforces Comments.md",
+                "file": "Images/comment-2.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Codeforces Comments.md"
+                "file": "Images/comment-2.png"
               }
             }
           }
@@ -183,10 +181,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c20333a2630865da",
+  "active": "d80e36e4bb51b9b4",
   "lastOpenFiles": [
-    "Main.md",
     "Codeforces Comments.md",
+    "Images/comment-2.png",
+    "Main.md",
     "Multiple Iteration - sort frames by power consumption.md",
     "Images/comment-1.png",
     "Images",
