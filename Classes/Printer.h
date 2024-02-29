@@ -9,6 +9,7 @@ class Printer
 {
 public:
     static void printResult(DataStorage &dataStorage);
+    static void printResult(OutputStorage &OutputStorage);
 };
 
 #endif // PRINTER_H
