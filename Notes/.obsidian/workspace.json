@@ -37,7 +37,7 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "Images/comment-2.png"
+                "file": "Images/comment-3.png"
               }
             }
           },
@@ -120,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Images/comment-2.png",
+                "file": "Images/comment-3.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Images/comment-2.png",
+                "file": "Images/comment-3.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Images/comment-2.png"
+                "file": "Images/comment-3.png"
               }
             }
           }
@@ -184,6 +184,7 @@
   "active": "d80e36e4bb51b9b4",
   "lastOpenFiles": [
     "Codeforces Comments.md",
+    "Images/comment-3.png",
     "Images/comment-2.png",
     "Main.md",
     "Multiple Iteration - sort frames by power consumption.md",
