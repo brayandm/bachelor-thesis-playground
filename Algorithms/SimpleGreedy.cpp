@@ -8,6 +8,15 @@ void SimpleGreedy::run()
 
     SimpleGreedy::step(dataStorage, FrameSorter::getFramesSortByTTIAndTBS(dataStorage));
 
+    for (int iteration = 0; iteration < numberOfIterations; iteration++)
+    {
+        std::vector<int> frameIds = FrameSorter::getFramesSortByRBGConsumed(dataStorage);
+
+        dataStorage.output.clean();
+
+        SimpleGreedy::step(dataStorage, frameIds);
+    }
+
     Printer::printResult(dataStorage);
 }
 
