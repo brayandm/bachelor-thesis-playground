@@ -1,5 +1,6 @@
 # Need to check
 - We can use several Cells with same RBG if there is only one user using all of them
+- Try to use technique that schedule several small frames on same TTI-RBG-Cell and large frames on all Cells on TTi-RBG
 - In commit 16af07e150bdebce4efa84b400abef2a359676a7 if we set iterations to 1 and comment the following code then we got:
 
 Total delivered: 120 / 150
