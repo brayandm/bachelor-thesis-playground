@@ -2,6 +2,7 @@
 
 #include <bits/stdc++.h>
 #include "Algorithms/Scheduler.h"
+#include "Algorithms/SimpleGreedy.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
 
-    Scheduler scheduler;
+    SimpleGreedy scheduler;
 
     scheduler.run();
 
