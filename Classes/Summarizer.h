@@ -4,7 +4,7 @@
 #include <iostream>
 #include "OutputStorage.h"
 #include "Precalculator.h"
-#include "DataTransmissionCalculator.h"
+#include "DeliveryCalculator.h"
 
 class Summarizer
 {

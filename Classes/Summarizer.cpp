@@ -7,22 +7,9 @@ void Summarizer::summarize(DataStorage &dataStorage)
     const std::string greenColor = "\033[32m";
     const std::string resetColor = "\033[0m";
 
-    Precalculator::precalculateUtils(dataStorage);
+    DeliveryCalculator deliveryCalculator(dataStorage);
 
-    for (int t = 0; t < dataStorage.input.T; t++)
-    {
-        DataTransmissionCalculator::computeGfromPinT(dataStorage, t);
-    }
-
-    int totalDelivered = 0;
-
-    for (int j = 0; j < dataStorage.input.J; j++)
-    {
-        if (dataStorage.G[j] >= dataStorage.input.TBS[j])
-        {
-            totalDelivered++;
-        }
-    }
+    int totalDelivered = deliveryCalculator.calculateDelivery(dataStorage);
 
     if ((double)totalDelivered / (double)dataStorage.input.J > 0.8)
     {
