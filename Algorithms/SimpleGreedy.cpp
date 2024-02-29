@@ -90,7 +90,6 @@ void SimpleGreedy::step(DataStorage &dataStorage, std::vector<int> frameIds)
                     int k = std::get<2>(option);
 
                     resourceBlockOcupation[t][r] = false;
-                    TTIOccupation[t] = false;
 
                     dataStorage.output.p[k][r][n][t] = 0;
                     dataStorage.output.b[k][r][n][t] = false;
