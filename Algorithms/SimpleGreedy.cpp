@@ -15,7 +15,7 @@ void SimpleGreedy::run()
 
     for (int iteration = 0; iteration < numberOfIterations; iteration++)
     {
-        std::vector<int> frameIds = FrameSorter::getFramesSortRandom(dataStorage);
+        std::vector<int> frameIds = FrameSorter::getFramesSortByRBGConsumed(dataStorage);
 
         dataStorage.clear();
 
