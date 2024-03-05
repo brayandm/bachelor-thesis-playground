@@ -17,7 +17,7 @@ class SimpleGreedy
 {
 public:
     static constexpr double EPS = 1e-9;
-    static const int numberOfIterations = 10;
+    static const int numberOfIterations = 1;
     static constexpr double initialPower = 1.0;
     void run();
     void step(DataStorage &dataStorage, std::vector<int> frameIds);
