@@ -1,0 +1,4 @@
+{
+  "name": "Simple Greedy using one RBG and all its Cells",
+  "description": "Here we schedule greedly all data frames, we try to assign only one RBG to each data frame and use all the cells distributing power equal to 1 to each Cell on that RBG to the data frame"
+}
