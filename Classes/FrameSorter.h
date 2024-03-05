@@ -9,6 +9,7 @@
 class FrameSorter
 {
 public:
+    static constexpr double oo = 1e9;
     static std::vector<int> getFramesSortByTBS(DataStorage &dataStorage);
     static std::vector<int> getFramesSortByTTI(DataStorage &dataStorage);
     static std::vector<int> getFramesSortByTTIAndTBS(DataStorage &dataStorage);

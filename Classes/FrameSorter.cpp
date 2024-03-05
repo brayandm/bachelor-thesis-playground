@@ -93,6 +93,9 @@ std::vector<int> FrameSorter::getFramesSortByRBGConsumed(DataStorage &dataStorag
             }
         }
 
+        if (rbgConsumed == 0)
+            rbgConsumed = 1e9;
+
         frames.push_back({rbgConsumed, j});
     }
 
