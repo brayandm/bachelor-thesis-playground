@@ -10,7 +10,7 @@ void MultiPackage::run()
 
     DeliveryCalculator deliveryCalculator(dataStorage);
 
-    SimpleGreedy::step(dataStorage, FrameSorter::getFramesSortByTTIAndTBS(dataStorage));
+    MultiPackage::step(dataStorage, FrameSorter::getFramesSortByTTIAndTBS(dataStorage));
     solutionManager.addSolution(dataStorage.output, deliveryCalculator.calculateDelivery(dataStorage));
 
     SolutionStore bestSolution = solutionManager.getBestSolution();
